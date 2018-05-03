@@ -8,6 +8,7 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
     EditText UsernameEt, PasswordEt;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
         String username = UsernameEt.getText().toString();
         String password = PasswordEt.getText().toString();
+        if (checkMark == true)
         String type = "login";
+
 
 
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
