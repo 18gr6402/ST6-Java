@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         String username = UsernameEt.getText().toString();
         String password = PasswordEt.getText().toString();
-        String type = "Login";
+        String type = "login";
 
 
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
