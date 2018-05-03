@@ -26,7 +26,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... params) {
         String type = params[0];
-        String login_url = "http://1a73c92a.ngrok.io/login.php"; //10.0.2.2 standard ip addresse til at kommunikere host
+        String login_url = "http://96954843.ngrok.io/login.php"; //10.0.2.2 standard ip addresse til at kommunikere host
         if(type.equals("login")) {
             try {
                 String user_name = params[1];

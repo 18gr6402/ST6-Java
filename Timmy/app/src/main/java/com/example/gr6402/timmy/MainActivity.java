@@ -1,5 +1,6 @@
 package com.example.gr6402.timmy;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,13 +24,20 @@ public class MainActivity extends AppCompatActivity {
 
         String username = UsernameEt.getText().toString();
         String password = PasswordEt.getText().toString();
-        if (checkMark == true)
+        //if (checkMark == true)
         String type = "login";
 
 
 
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute(type, username, password);
+
+    }
+
+    public void OnClickBox(View view) {
+
+        Intent in = new Intent(this, LoginLaege.class);
+        startActivity(in);
 
     }
 
