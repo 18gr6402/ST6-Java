@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_launcher_foreground"
+    android:background="@drawable/bagground_animation"
     tools:context=".MainActivity">
 
     <EditText
@@ -45,7 +45,8 @@
         android:layout_alignStart="@+id/etUsername"
         android:layout_marginTop="155dp"
         android:text="Læge"
-        android:onClick="OnClickBox"/>
+        android:onClick="OnClickBox"
+        android:checked="true" />
 
     <Button
         android:id="@+id/button"
