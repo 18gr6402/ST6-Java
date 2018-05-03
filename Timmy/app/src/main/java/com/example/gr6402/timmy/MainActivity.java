@@ -2,6 +2,7 @@ package com.example.gr6402.timmy;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,5 +19,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 public void OnLogin(View view) {
+    
+    String username = UsernameEt.getText().toString();
+    String password = PasswordEt.getText().toString();
+    String type = "Login";
+
+
+    BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+    backgroundWorker.execute(type,username,password);
     
 }
