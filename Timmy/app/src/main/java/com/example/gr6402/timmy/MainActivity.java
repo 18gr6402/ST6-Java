@@ -1,14 +1,20 @@
 package com.example.gr6402.timmy;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 public class MainActivity extends AppCompatActivity {
-    EditText UsernameEt, PasswordEt;
 
+    RelativeLayout MyLayout;
+    AnimationDrawable animationDrawable;
+
+    EditText UsernameEt, PasswordEt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +22,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         UsernameEt = (EditText) findViewById(R.id.etUsername);
         PasswordEt = (EditText) findViewById(R.id.etPassword);
+
+        MyLayout = (RelativeLayout) findViewById(R.id.myLayout);
+
+        animationDrawable = (AnimationDrawable) MyLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(4500);
+        animationDrawable.setExitFadeDuration(4500);
+        animationDrawable.start();
 
     }
 
