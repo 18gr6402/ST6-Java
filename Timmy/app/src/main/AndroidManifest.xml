@@ -11,14 +11,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".dk.gr6402.controller.LoginCtrl">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginLaege"></activity>
+        <activity android:name=".LoginLaege" />
+        <activity android:name=".dk.gr6402.controller.NewUserCtrl" />
+        <activity android:name=".dk.gr6402.controller.EditProfileCtrl" />
+        <activity android:name=".dk.gr6402.controller.ViewGuideCtrl" />
+        <activity android:name=".dk.gr6402.controller.NewPatientCtrl" />
+        <activity android:name=".dk.gr6402.controller.MenuPatientCtrl" />
+        <activity android:name=".dk.gr6402.controller.ProfilePatientCtrl" />
+        <activity android:name=".dk.gr6402.controller.CollectSCGCtrl" />
+        <activity android:name=".dk.gr6402.controller.MeasureCtrl" />
+        <activity android:name=".dk.gr6402.controller.ConfirmMeasureCtrl" />
+        <activity android:name=".dk.gr6402.controller.EditSymptomsCtrl" />
+        <activity android:name=".dk.gr6402.controller.NewPractitionerCtrl" />
+        <activity android:name=".dk.gr6402.controller.MenuPractitionerCtrl" />
+        <activity android:name=".dk.gr6402.controller.ProfilePractitionerCtrl" />
+        <activity android:name=".dk.gr6402.controller.PatientOverviewCtrl" />
+        <activity android:name=".dk.gr6402.controller.AddPatientCtrl" />
+        <activity android:name=".dk.gr6402.controller.ResetThresholdDialogCtrl" />
+        <activity android:name=".dk.gr6402.controller.EditPatientCtrl" />
+        <activity android:name=".dk.gr6402.controller.DeletePatientDialogCtrl" />
+        <activity android:name=".dk.gr6402.controller.ViewSCGCtrl" />
+        <activity android:name=".dk.gr6402.controller.PatientWarningsCtrl" />
+        <activity android:name=".dk.gr6402.controller.PractitionerOverviewCtrl" />
+        <activity android:name=".dk.gr6402.controller.AddPractitionerCtrl" />
+        <activity android:name=".dk.gr6402.controller.DeletePractitionerDialogCtrl"></activity>
     </application>
 
 </manifest>
