@@ -7,7 +7,7 @@
     tools:context=".dk.gr6402.controller.LoginCtrl">
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -18,14 +18,25 @@
         android:onClick="handleLogin"/>
 
     <CheckBox
-        android:id="@+id/checkClinic"
+        android:id="@+id/cbCheckClinic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="70dp"
-        android:layout_marginTop="121dp"
+        android:layout_alignStart="@+id/btnLogin"
+        android:layout_marginTop="106dp"
         android:checked="true"
         android:onClick="handleCheckClinic"
         android:text="Læge" />
+
+    <Button
+        android:id="@+id/btnNewUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/btnLogin"
+        android:layout_marginBottom="31dp"
+        android:layout_marginStart="45dp"
+        android:onClick="handleNewUser"
+        android:text="Opret bruger" />
+
 </RelativeLayout>

@@ -37,7 +37,7 @@
         <activity android:name=".dk.gr6402.controller.ResetThresholdDialogCtrl" />
         <activity android:name=".dk.gr6402.controller.EditPatientCtrl" />
         <activity android:name=".dk.gr6402.controller.DeletePatientDialogCtrl" />
-        <activity android:name=".dk.gr6402.controller.ViewSCGCtrl" />
+        <activity android:name=".dk.gr6402.controller.InspectMonitoringCtrl" />
         <activity android:name=".dk.gr6402.controller.PatientWarningsCtrl" />
         <activity android:name=".dk.gr6402.controller.PractitionerOverviewCtrl" />
         <activity android:name=".dk.gr6402.controller.AddPractitionerCtrl" />

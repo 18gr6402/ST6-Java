@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".dk.gr6402.controller.MenuPractitionerCtrl">
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DET LYKKEDES"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="259dp" />
 </android.support.constraint.ConstraintLayout>

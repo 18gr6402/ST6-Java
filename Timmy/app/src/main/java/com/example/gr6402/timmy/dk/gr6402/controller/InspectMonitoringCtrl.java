@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.example.gr6402.timmy.R;
 
-public class ViewSCGCtrl extends AppCompatActivity {
+public class InspectMonitoringCtrl extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.viewscg);
+        setContentView(R.layout.inspectmonitoring);
     }
 }
