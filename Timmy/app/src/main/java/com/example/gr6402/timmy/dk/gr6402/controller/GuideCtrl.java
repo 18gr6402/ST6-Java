@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.example.gr6402.timmy.R;
 
-public class EditSymptomsCtrl extends AppCompatActivity {
+public class GuideCtrl extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.editsymptoms);
+        setContentView(R.layout.guide);
     }
 }

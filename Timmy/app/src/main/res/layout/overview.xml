@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dk.gr6402.controller.DeletePatientDialogCtrl">
+    tools:context=".dk.gr6402.controller.OverviewCtrl">
 
 </android.support.constraint.ConstraintLayout>

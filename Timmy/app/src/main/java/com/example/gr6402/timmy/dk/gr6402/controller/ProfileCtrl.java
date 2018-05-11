@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.example.gr6402.timmy.R;
 
-public class MenuPatientCtrl extends AppCompatActivity {
+public class ProfileCtrl extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menupatient);
+        setContentView(R.layout.profile);
     }
 }

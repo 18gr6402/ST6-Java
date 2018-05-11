@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.example.gr6402.timmy.R;
 
-public class DeletePatientDialogCtrl extends AppCompatActivity {
+public class NewCtrl extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.deletepatientdialog);
+        setContentView(R.layout.newview);
     }
 }

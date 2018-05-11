@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.example.gr6402.timmy.R;
 
-public class PractitionerOverviewCtrl extends AppCompatActivity {
+public class EditCtrl extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.practitioneroverview);
+        setContentView(R.layout.edit);
     }
 }

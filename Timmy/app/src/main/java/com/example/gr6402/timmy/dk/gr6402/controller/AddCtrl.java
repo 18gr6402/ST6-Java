@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.example.gr6402.timmy.R;
 
-public class PatientWarningsCtrl extends AppCompatActivity {
+public class AddCtrl extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.patientwarnings);
+        setContentView(R.layout.add);
     }
 }
