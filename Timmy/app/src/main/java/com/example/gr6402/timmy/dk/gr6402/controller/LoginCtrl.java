@@ -1,25 +1,27 @@
 package com.example.gr6402.timmy.dk.gr6402.controller;
 
+import android.app.Activity;
 import android.arch.lifecycle.ViewModelProvider;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import com.example.gr6402.timmy.R;
 import com.example.gr6402.timmy.dk.gr6402.model.Patient;
+import com.example.gr6402.timmy.dk.gr6402.model.Practitioner;
 import com.example.gr6402.timmy.dk.gr6402.model.User;
 
 
-public class LoginCtrl extends AppCompatActivity {
+public class LoginCtrl extends Activity {
     // objekter i viewet defineres her som attributter, med type og id på objektet.
     private Button btnLogin;
     public CheckBox cbCheckClinic;
     private Button btnNewUser;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,34 +30,21 @@ public class LoginCtrl extends AppCompatActivity {
         cbCheckClinic = (CheckBox) findViewById(R.id.cbCheckClinic); // forbinder java klassen med objektet i viewet
         btnNewUser = (Button) findViewById(R.id.btnNewUser);
         btnLogin = (Button) findViewById(R.id.btnLogin);
-
-
     }
-
 
     public void handleLogin (View view){
-
+        Intent i = new Intent(this,MenuCtrl.class);
         if (cbCheckClinic.isChecked()) {
-            //Toast.makeText(this, "Loui er gud", Toast.LENGTH_SHORT).show();
-
-
-
-
+            Practitioner loginUser = new Practitioner(240694, true);
+            i.putExtra("PractitionerTag",(Parcelable) loginUser);
             }
-           else {
 
+            else {
             Patient loginUser = new Patient(1223334444);
-            Intent i = new Intent(this,MenuCtrl.class);
-            i.putExtra("PatientTag",loginUser);
-            startActivity(i);
-
-
-               }
-
-        Intent in_menu = new Intent(this, MenuCtrl.class);
-        startActivity(in_menu);
+            i.putExtra("PatientTag",(Parcelable) loginUser);
+        }
+        startActivity(i);
     }
-
 
 
 

@@ -1,17 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical"
     tools:context=".dk.gr6402.controller.MenuCtrl">
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnProfile"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
-        android:visibility="gone"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="189dp" />
-</android.support.constraint.ConstraintLayout>
+        android:onClick="handleProfile"
+        android:text="Profil" />
+
+    <Button
+        android:id="@+id/btnWarnings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="handleWarnings"
+        android:text="Advarsler" />
+
+    <Button
+        android:id="@+id/btnPractitionerOverview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="handleOverview"
+        android:text="Lægekartotek" />
+
+    <Button
+        android:id="@+id/btnPatientOverview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="handleOverview"
+        android:text="Patientkartotek" />
+
+    <Button
+        android:id="@+id/btnCollectSCG"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="handleCollectSCG"
+        android:text="Foretag Monitorering" />
+
+    <Button
+        android:id="@+id/btnGuide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="handleGuide"
+        android:text="Guide" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="handleLogout"
+        android:text="Logout" />
+
+
+</LinearLayout>
