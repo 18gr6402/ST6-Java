@@ -17,7 +17,7 @@ import com.example.gr6402.timmy.dk.gr6402.model.Practitioner;
 import com.example.gr6402.timmy.dk.gr6402.model.User;
 
 
-public class LoginCtrl extends Activity {
+public class LoginCtrl extends AppCompatActivity {
     // objekter i viewet defineres her som attributter, med type og id på objektet.
     private Button btnLogin;
     public CheckBox cbCheckClinic;
@@ -35,12 +35,13 @@ public class LoginCtrl extends Activity {
     public void handleLogin (View view){
         Intent i = new Intent(this,MenuCtrl.class);
         if (cbCheckClinic.isChecked()) {
-            Practitioner loginUser = new Practitioner(240694, true);
+            Practitioner loginUser = new Practitioner(240694, true); //instancering af lægen, todo mangler hente fra databasesjovet
+
             i.putExtra("PractitionerTag",(Parcelable) loginUser);
             }
 
             else {
-            Patient loginUser = new Patient(1223334444);
+            Patient loginUser = new Patient(140693); //instancering af patient, todo mangler hente fra databasesjovet
             i.putExtra("PatientTag",(Parcelable) loginUser);
         }
         startActivity(i);
@@ -48,12 +49,14 @@ public class LoginCtrl extends Activity {
 
 
 
-    public void handleCheckClinic(View view){
+    public void checkPractitioner(View view){
+
         //todo skal synliggøre klinik feltet når klikket på
     }
 
 
     public void handleNewUser(View view){
+
         Intent in_newview = new Intent(this, NewCtrl.class);
         startActivity(in_newview);
     }

@@ -2,17 +2,19 @@ package com.example.gr6402.timmy.dk.gr6402.controller;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.gr6402.timmy.R;
 import com.example.gr6402.timmy.dk.gr6402.model.Patient;
 import com.example.gr6402.timmy.dk.gr6402.model.Practitioner;
 import com.example.gr6402.timmy.dk.gr6402.model.User;
 
-public class MenuCtrl extends Activity {
+public class MenuCtrl extends AppCompatActivity {
 
     private Button btnProfile;
     private Button btnWarnings;
@@ -21,6 +23,8 @@ public class MenuCtrl extends Activity {
     private Button btnCollectSCG;
     private Button btnGuide;
     private Button btnLogout;
+    private Patient loginPatient;
+    private Practitioner loginPractitioner;
 
 
     @Override
@@ -37,39 +41,27 @@ public class MenuCtrl extends Activity {
         btnGuide = (Button) findViewById(R.id.btnGuide);
         btnLogout = (Button) findViewById(R.id.btnLogout);
 
-        // undersøg om det er patient der logger ind
-        try {
-            Patient loginUser = (Patient) getIntent().getParcelableExtra("PatientTag");
-            Integer cpr = loginUser.getCpr();   //til test, skal slettes
-            System.err.println("cpr="+cpr);     //til test, skal slettes
-            btnWarnings.setVisibility(View.GONE);
-            btnPractitionerOverview.setVisibility(View.GONE);
-            btnPatientOverview.setVisibility(View.GONE);
-            btnGuide.setVisibility(View.GONE);
-        }
-        catch (Exception e){
-            System.out.println("Login som Læge");
-        }
-        // undersøg om det er læge der logger ind
-        try{
-            Practitioner loginUser = (Practitioner) getIntent().getParcelableExtra("PractitionerTag");
-            Integer ID = loginUser.getEmploymentID();   //til test, skal slettes
-            Boolean adm = loginUser.getAdministrator();
-            System.err.println("ID="+ID);               //til test, skal slettes
-            btnCollectSCG.setVisibility(View.GONE);
-            if (!adm){
-                btnPractitionerOverview.setVisibility(View.GONE);
-            }
-        }
-        catch (Exception e){
-            System.out.println("Login som Patient");
-        }
+        loginUser();
 
+        // koden til skel mellem læge og patient
+        if (loginPatient != null) {
+            Toast.makeText(this, "Logget ind som Patient", Toast.LENGTH_LONG).show();
+            }
+            else{
+            Toast.makeText(this,"Logget ind som Læge", Toast.LENGTH_LONG).show();
+        }
 
     }
 
     public void handleProfile (View view){
-
+        Intent i = new Intent(this,ProfileCtrl.class);
+        if (loginPatient != null) {
+            i.putExtra("PatientTag",(Parcelable) loginPatient);
+        }
+        else{
+            i.putExtra("PractitionerTag",(Parcelable) loginPractitioner);
+        }
+        startActivity(i);
     }
 
     public void handleWarnings (View view){
@@ -93,5 +85,33 @@ public class MenuCtrl extends Activity {
         startActivity(i);
     }
 
-
+    public void loginUser(){
+        // undersøg om det er patient der logger ind
+        try {
+            loginPatient = (Patient) getIntent().getParcelableExtra("PatientTag");
+            Integer cpr = loginPatient.getCpr();    //til test, skal slettes
+            System.err.println("cpr="+cpr);         //til test, skal slettes
+            btnWarnings.setVisibility(View.GONE);
+            btnPractitionerOverview.setVisibility(View.GONE);
+            btnPatientOverview.setVisibility(View.GONE);
+            btnGuide.setVisibility(View.GONE);
+        }
+        catch (Exception e){
+            System.out.println("Login som Læge");
+        }
+        // undersøg om det er læge der logger ind
+        try{
+            loginPractitioner = (Practitioner) getIntent().getParcelableExtra("PractitionerTag");
+            Integer ID = loginPractitioner.getEmploymentID();   //til test, skal slettes
+            Boolean adm = loginPractitioner.getAdministrator();
+            System.err.println("ID="+ID);                       //til test, skal slettes
+            btnCollectSCG.setVisibility(View.GONE);
+            if (!adm){
+                btnPractitionerOverview.setVisibility(View.GONE);
+            }
+        }
+        catch (Exception e){
+            System.out.println("Login som Patient");
+        }
+    }
 }

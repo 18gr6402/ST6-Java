@@ -3,38 +3,34 @@ package com.example.gr6402.timmy.dk.gr6402.model;
 public class Clinic {
 
     // attributes
-
     private Integer clinicID;
     private String clinicName;
     private String region;
 
-    // methods
 
-    public void clinic(){
-
+    // get and set methods
+    public Integer getClinicID() {
+        return clinicID;
     }
 
-    public void getClinicID(){
-        // int
+    public void setClinicID(Integer clinicID) {
+        this.clinicID = clinicID;
     }
 
-    public void clinicIDProperty(){
-        // Integer
+    public String getClinicName() {
+        return clinicName;
     }
 
-    public void getClinicNam(){
-        // String
+    public void setClinicName(String clinicName) {
+        this.clinicName = clinicName;
     }
 
-    public void clinicNameProperty(){
-        // Integer
+    public String getRegion() {
+        return region;
     }
 
-    public void getRegion(){
-        // String
+    public void setRegion(String region) {
+        this.region = region;
     }
 
-    public void regionProperty(){
-        // String
-    }
 }

@@ -1,9 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical"
     tools:context=".dk.gr6402.controller.ProfileCtrl">
 
-</android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/cprText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CPR:" />
+
+    <TextView
+        android:id="@+id/cprLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/employmentIDText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ansættelses ID:" />
+
+    <TextView
+        android:id="@+id/employmentIDLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/firstNameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fornavn:" />
+
+    <TextView
+        android:id="@+id/firstNameLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/lastNameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Efternavn:" />
+
+    <TextView
+        android:id="@+id/lastNameLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/passwordText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adgangskode:" />
+
+    <TextView
+        android:id="@+id/passwordLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="handleUpdate"
+        android:text="Rediger" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="handleBack"
+        android:text="Tilbage" />
+
+
+</LinearLayout>
