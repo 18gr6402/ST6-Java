@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".dk.gr6402.controller.CollectSCGCtrl">
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/btnViewGuide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vis guide"
+        android:onClick="handleViewGuide"/>
+
+    <Button
+        android:id="@+id/btnMeasure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start måling"
+        android:onClick="handleMeasure"/>
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tilbage"
+        android:onClick="handleBack"/>
+</LinearLayout>

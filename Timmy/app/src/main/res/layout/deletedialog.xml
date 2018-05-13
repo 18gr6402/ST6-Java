@@ -1,9 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".dk.gr6402.controller.DeleteDialogCtrl">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/cprTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CPR:" />
+
+    <TextView
+        android:id="@+id/cprLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/employmentIDTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ansættelses ID:" />
+
+    <TextView
+        android:id="@+id/employmentIDLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/firstNameTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fornavn:" />
+
+    <TextView
+        android:id="@+id/firstNameLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/lastNameTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Efternavn:" />
+
+    <TextView
+        android:id="@+id/lastNameLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:onClick="handleOk"/>
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Annullér"
+        android:onClick="handleCancel"/>
+</LinearLayout>

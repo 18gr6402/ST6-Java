@@ -1,9 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical"
     tools:context=".dk.gr6402.controller.NewCtrl">
 
-</android.support.constraint.ConstraintLayout>
+    <CheckBox
+        android:id="@+id/cbCheckPractitioner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Læge"
+        tools:layout_editor_absoluteX="288dp"
+        tools:layout_editor_absoluteY="16dp"
+        android:checked="false"
+        android:onClick="checkPractitioner" />
+
+    <TextView
+        android:id="@+id/clinicTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Klinik ID:" />
+
+    <Spinner
+        android:id="@+id/clinicChoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"/>
+
+    <TextView
+        android:id="@+id/employmentIDTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ansættelses ID:" />
+
+    <EditText
+        android:id="@+id/employmentIDField"
+        android:layout_width="match_parent"
+        android:layout_height="29dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/cprTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CPR-nummer:" />
+
+    <EditText
+        android:id="@+id/cprField"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/firstNameTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fornavn:" />
+
+    <EditText
+        android:id="@+id/firstNameField"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/lastNameTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Efternavn:" />
+
+    <EditText
+        android:id="@+id/lastNameField"
+        android:layout_width="match_parent"
+        android:layout_height="31dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/passwordTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adgangskode:" />
+
+    <EditText
+        android:id="@+id/passwordField"
+        android:layout_width="match_parent"
+        android:layout_height="27dp"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/passwordTxt2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gentag adgangskode:" />
+
+    <EditText
+        android:id="@+id/passwordField2"
+        android:layout_width="match_parent"
+        android:layout_height="31dp"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:onClick="handleOk"/>
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Annullér"
+        android:onClick="handleCancel"/>
+</LinearLayout>

@@ -1,9 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical"
     tools:context=".dk.gr6402.controller.AddCtrl">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/employmentIDTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ansættelses ID:" />
+
+    <EditText
+        android:id="@+id/employmentIDField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/employmentIDTxt2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gentag ansættelses ID:" />
+
+    <EditText
+        android:id="@+id/employmentIDField2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/cprTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CPR-nummer:" />
+
+    <EditText
+        android:id="@+id/cprField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/cprTxt2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gentag CPR-nummer:" />
+
+    <EditText
+        android:id="@+id/cprField2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/nyhaTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NYHA-klassifikation:" />
+
+    <Spinner
+        android:id="@+id/nyhaChoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"/>
+
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:onClick="handleOk"/>
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Annullér"
+        android:onClick="handleCancel"/>
+
+</LinearLayout>

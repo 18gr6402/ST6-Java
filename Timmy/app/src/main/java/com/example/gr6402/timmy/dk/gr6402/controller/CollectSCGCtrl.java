@@ -7,6 +7,8 @@ import com.example.gr6402.timmy.R;
 
 public class CollectSCGCtrl extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
