@@ -57,7 +57,7 @@ public class MenuCtrl extends Activity {
             Boolean adm = loginUser.getAdministrator();
             System.err.println("ID="+ID);               //til test, skal slettes
             btnCollectSCG.setVisibility(View.GONE);
-            if (adm == false){
+            if (!adm){
                 btnPractitionerOverview.setVisibility(View.GONE);
             }
         }
@@ -65,7 +65,7 @@ public class MenuCtrl extends Activity {
             System.out.println("Login som Patient");
         }
 
-        //loginUser
+
     }
 
     public void handleProfile (View view){
