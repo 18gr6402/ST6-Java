@@ -27,6 +27,7 @@ public class ProfileCtrl extends AppCompatActivity {
     private Patient loginPatient;
     private Practitioner loginPractitioner;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +50,7 @@ public class ProfileCtrl extends AppCompatActivity {
 
         showDetails();
     }
+
 
     public void showDetails(){
 
@@ -80,6 +82,7 @@ public class ProfileCtrl extends AppCompatActivity {
         }
     }
 
+
     public void handleUpdate(View view){
         Intent i = new Intent(this,EditCtrl.class);
         if (loginPatient != null) {
@@ -91,6 +94,7 @@ public class ProfileCtrl extends AppCompatActivity {
         }
         startActivity(i);
     }
+
 
     public void handleBack(View view){
         Intent i = new Intent(this,MenuCtrl.class);

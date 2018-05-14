@@ -19,40 +19,45 @@
         android:text="Læge" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/clinicText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="Klinik" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/clinincSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:visibility="gone" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/userNameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Brugernavn" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/userNameField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="CPR" />
+        android:text="CPR"
+        android:onClick="clearText"/>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/passwordText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Adgangskode" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/passwordField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"

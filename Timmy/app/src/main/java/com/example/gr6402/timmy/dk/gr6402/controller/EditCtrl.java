@@ -9,8 +9,11 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gr6402.timmy.R;
+import com.example.gr6402.timmy.dk.gr6402.model.Patient;
+import com.example.gr6402.timmy.dk.gr6402.model.Practitioner;
 
 public class EditCtrl extends AppCompatActivity{
 
@@ -31,6 +34,8 @@ public class EditCtrl extends AppCompatActivity{
     private Button btnResetThreshold;
     private Button btnOk;
     private Button btnCancel;
+    private Practitioner loginPractitioner;
+    private Patient loginPatient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,41 @@ public class EditCtrl extends AppCompatActivity{
         btnResetThreshold = (Button) findViewById(R.id.btnResetThreshold);
         btnOk = (Button) findViewById(R.id.btnOk);
         btnCancel = (Button) findViewById(R.id.btnCancel);
+
+        //get intent
+        loginPractitioner = (Practitioner) getIntent().getParcelableExtra("PractitionerTag");
+        loginPatient = (Patient) getIntent().getParcelableExtra("PatientTag");
+    }
+
+
+    public void showDetails(){
+
+        if (loginPatient != null) {
+            // todo get fornavn, efternavn og password fra database gennem Patient
+            loginPatient.setFirstName("Bo");            //Dummydata todo slet
+            loginPatient.setLastName("Hansen");         //Dummydata todo slet
+            loginPatient.setPassword("bokode");         //Dummydata todo slet
+            Toast.makeText(this, "Rediger Patient profiloplysninger", Toast.LENGTH_LONG).show();
+            cprLabel.setText(loginPatient.getCpr().toString());
+            employmentIDText.setVisibility(View.GONE);
+            employmentIDLabel.setVisibility(View.GONE);
+            firstNameField.setText(loginPatient.getFirstName());
+            lastNameField.setText(loginPatient.getLastName());
+            passwordField.setText(loginPatient.getPassword());
+        }
+        else{
+            // todo get fornavn, efternavn og password fra database gennem Practitioner
+            loginPractitioner.setFirstName("Steffen");      //Dummydata todo slet
+            loginPractitioner.setLastName("Jensen");        //Dummydata todo slet
+            loginPractitioner.setPassword("steffenkode");   //Dummydata todo slet
+            Toast.makeText(this,"Rediger Læge profiloplysninger", Toast.LENGTH_LONG).show();
+            cprText.setVisibility(View.GONE);
+            cprLabel.setVisibility(View.GONE);
+            employmentIDLabel.setText(loginPractitioner.getEmploymentID().toString());
+            firstNameLabel.setText(loginPractitioner.getFirstName());
+            lastNameLabel.setText(loginPractitioner.getLastName());
+            passwordLabel.setText(loginPractitioner.getPassword());
+        }
     }
 
     public void handleResetThreshold(View view){

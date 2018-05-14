@@ -16,7 +16,7 @@ public class Patient extends User implements Parcelable {
 
     }
 
-    public Patient(int cpr){
+    public Patient(int cpr, String nyha, int symptomThreshold, int mpiThreshold){
         this.cpr =  cpr;
         this.nyha = nyha;
         this.symptomThreshold = symptomThreshold;
