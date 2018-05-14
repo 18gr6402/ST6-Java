@@ -25,13 +25,20 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/userIDColumn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ok"/>
+                        android:text="Cpr:  "/>
                     <TextView
+                        android:id="@+id/firstNameColumn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="bye"/>
+                        android:text="Fornavn:  "/>
+                    <TextView
+                        android:id="@+id/lastNameColumn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Efternavn:  "/>
                 </TableRow>
             </TableLayout>
     </ScrollView>
@@ -113,11 +120,51 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="" />
+        <TextView
+            android:id="@+id/mpiTimeChartTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MPI over tid:" />
 
         <com.jjoe64.graphview.GraphView
+            android:id="@+id/mpiTimeChart"
             android:layout_width="match_parent"
-            android:layout_height="200dip"
-            android:id="@+id/graph" />
+            android:layout_height="100dp" />
+
+        <Button
+            android:id="@+id/btnInspectMonitorering"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="handleInspectMonitoring"
+            android:text="Inspicer monitorering" />
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="handleAdd"
+            android:text="Tilføj" />
+
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="handleEdit"
+            android:text="Rediger" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="handleDelete"
+            android:text="Slet" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="handleBack"
+            android:text="Tilbage" />
 
     </LinearLayout>
 </LinearLayout>
