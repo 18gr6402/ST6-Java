@@ -14,10 +14,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gr6402.timmy.BackgroundWorker;
 import com.example.gr6402.timmy.R;
 import com.example.gr6402.timmy.dk.gr6402.model.Patient;
 import com.example.gr6402.timmy.dk.gr6402.model.Practitioner;
 import com.example.gr6402.timmy.dk.gr6402.model.User;
+import com.example.gr6402.timmy.dk.gr6402.myinterface.DatabaseOperations;
 
 
 public class LoginCtrl extends AppCompatActivity {
@@ -25,7 +27,7 @@ public class LoginCtrl extends AppCompatActivity {
     public CheckBox cbCheckPractitioner;
     public TextView clinincText;
     public Spinner clinincSpinner;
-    public EditText userNameField;
+    public EditText userNameField, passwordField;
     private Button btnLogin;
     private Button btnNewUser;
 
@@ -39,6 +41,7 @@ public class LoginCtrl extends AppCompatActivity {
         clinincText = (TextView) findViewById(R.id.clinicText);
         clinincSpinner = (Spinner) findViewById(R.id.clinincSpinner);
         userNameField = (EditText) findViewById(R.id.userNameField);
+        passwordField = (EditText) findViewById(R.id.passwordField);
         btnNewUser = (Button) findViewById(R.id.btnNewUser);
         btnLogin = (Button) findViewById(R.id.btnLogin);
     }
@@ -73,14 +76,24 @@ login. Udføre den tilhørende handling for intent af næste menu vindue.
     public void handleLogin (View view){
         Intent i = new Intent(this,MenuCtrl.class);
         if (cbCheckPractitioner.isChecked()) {
+
+            String userName = userNameField.getText().toString();
+            String password = passwordField.getText().toString();
+            String type = "login";
+
             Practitioner loginUser = new Practitioner(Integer.parseInt(userNameField.getText().toString()), true); //instancering af lægen, dummy todo mangler hente fra databasesjovet
             i.putExtra("PractitionerTag",(Parcelable) loginUser);
             }
 
             else {
+
+
             Patient loginUser = new Patient(Integer.parseInt(userNameField.getText().toString()),"klasse 4",12, 4); //instancering af patient, dummy todo mangler hente fra databasesjovet
             i.putExtra("PatientTag",(Parcelable) loginUser);
         }
+
+        DatabaseOperations databaseOperations = new DatabaseOperations(this);
+        databaseOperations.execute(type,userName,password);
 
         startActivity(i);
     }
