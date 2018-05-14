@@ -67,19 +67,21 @@ public class EditCtrl extends AppCompatActivity{
         // hvor kommer vi fra profile (val = 1) eller overview (val = 0)
         bun=getIntent().getExtras();
         val=bun.getInt("VAL");
-        //get intent
+        //get intent med overført data fra forrige view
         loginPractitioner = (Practitioner) getIntent().getParcelableExtra("PractitionerTag");
         if(val == 1) {
             loginPatient = (Patient) getIntent().getParcelableExtra("PatientTag");
-        }else if(val==0){
+        }else if(val == 0){
             selectedPatient = (Patient) getIntent().getParcelableExtra("selectedPatienTag");
         }
-
 
         showDetails();
     }
 
-
+/*
+Ændre view (synlighed på Field og knapper) og indsætter data (fra overført data) afhængig af det
+ forgående view og hvem der logger ind.
+ */
     public void showDetails(){
         if(val==1) {
             cprTxt.setVisibility(View.GONE);
@@ -91,25 +93,23 @@ public class EditCtrl extends AppCompatActivity{
             btnResetThreshold.setVisibility(View.GONE);
 
             if (loginPatient != null) {
-            // todo get fornavn, efternavn og password fra database gennem Patient
+            // todo get fornavn, efternavn og password fra database ud fra cpr gennem Patient.class metoder
             loginPatient.setFirstName("Bo");            //Dummydata todo slet
             loginPatient.setLastName("Hansen");         //Dummydata todo slet
             loginPatient.setPassword("bokode");         //Dummydata todo slet
             Toast.makeText(this, "Rediger Patient profiloplysninger", Toast.LENGTH_LONG).show();
-
             firstNameField.setText(loginPatient.getFirstName());
             lastNameField.setText(loginPatient.getLastName());
-
             } else{
-            // todo get fornavn, efternavn og password fra database gennem Practitioner
+            // todo get fornavn, efternavn og password fra database ud fra employmentID og clinincID gennem Practitioner.class metoder
             loginPractitioner.setFirstName("Steffen");      //Dummydata todo slet
             loginPractitioner.setLastName("Jensen");        //Dummydata todo slet
             loginPractitioner.setPassword("steffenkode");   //Dummydata todo slet
             Toast.makeText(this,"Rediger Læge profiloplysninger", Toast.LENGTH_LONG).show();
-
             firstNameField.setText(loginPractitioner.getFirstName());
             lastNameField.setText(loginPractitioner.getLastName());
             }
+
         }else if (val==0){
             firstNameTxt.setVisibility(View.GONE);
             firstNameField.setVisibility(View.GONE);
@@ -119,7 +119,7 @@ public class EditCtrl extends AppCompatActivity{
             passwordField.setVisibility(View.GONE);
             passwordTxt2.setVisibility(View.GONE);
             passwordField2.setVisibility(View.GONE);
-
+            Toast.makeText(this,"Rediger valgte patient", Toast.LENGTH_LONG).show();
             // todo læs cpr fra selectedPatient og sæt
             //cprField.setText(selectedPatient.getCpr());
             //cprField2.setText(selectedPatient.getCpr());
@@ -129,13 +129,15 @@ public class EditCtrl extends AppCompatActivity{
     }
 
     public void handleResetThreshold(View view){
-
+        // todo sæt tærskelværdierne for selctedPatient til null i databsen gennem Patient.class metode.
     }
 
     public void handleOk(View view){
-
+        // todo gem nye værdier i databasen under selectedPatient gennem gennem Patient.class metode.
     }
-
+/*
+Føre bruger tilbage til forgående view og sender egne oplysninger med.
+ */
     public void handleCancel(View view){
         Intent i;
         if (val == 1) {

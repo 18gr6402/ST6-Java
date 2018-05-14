@@ -46,39 +46,67 @@ public class MenuCtrl extends AppCompatActivity {
         // koden til skel mellem læge og patient
         if (loginPatient != null) {
             Toast.makeText(this, "Logget ind som Patient", Toast.LENGTH_LONG).show();
-            }
-            else{
+        } else{
             Toast.makeText(this,"Logget ind som Læge", Toast.LENGTH_LONG).show();
         }
 
     }
 
+
     public void handleProfile (View view){
         Intent i = new Intent(this,ProfileCtrl.class);
         if (loginPatient != null) {
             i.putExtra("PatientTag",(Parcelable) loginPatient);
-        }
-        else{
+        } else{
             i.putExtra("PractitionerTag",(Parcelable) loginPractitioner);
         }
         startActivity(i);
     }
 
+
     public void handleWarnings (View view){
-
+        Intent i = new Intent(this,WarningsCtrl.class);
+        i.putExtra("PractitionerTag",(Parcelable) loginPractitioner);
+        startActivity(i);
     }
 
-    public void handleOverview (View view){
 
+    public void handlePatientOverview (View view){
+        Intent i = new Intent(this,OverviewCtrl.class);
+        i.putExtra("PractitionerTag",(Parcelable) loginPractitioner);
+        Bundle bundle = new Bundle();
+        bundle.putInt("VAL", 1);    // menu:Patientkartotek til overview -> val = 1
+        i.putExtras(bundle);
+        startActivity(i);
     }
+
+
+    public void handlePractitionerOverview (View view){
+        Intent i = new Intent(this,OverviewCtrl.class);
+        i.putExtra("PractitionerTag",(Parcelable) loginPractitioner);
+        Bundle bundle = new Bundle();
+        bundle.putInt("VAL", 0);    // menu:Lægekartotek til overview -> val = 0
+        i.putExtras(bundle);
+        startActivity(i);
+    }
+
 
     public void handleCollectSCG (View view){
-
+        Intent i = new Intent(this,CollectSCGCtrl.class);
+        i.putExtra("PatientTag",(Parcelable) loginPatient);
+        startActivity(i);
     }
+
 
     public void handleGuide(View view){
-
+        Intent i = new Intent(this,GuideCtrl.class);
+        i.putExtra("PractitionerTag",(Parcelable) loginPractitioner);
+        Bundle bundle = new Bundle();
+        bundle.putInt("VAL", 1);    // menu til guide -> val = 1
+        i.putExtras(bundle);
+        startActivity(i);
     }
+
 
     public void handleLogout (View view){
         Intent i = new Intent(this,LoginCtrl.class);

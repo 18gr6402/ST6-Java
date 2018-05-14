@@ -26,14 +26,14 @@
         android:id="@+id/btnPractitionerOverview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="handleOverview"
+        android:onClick="handlePractitionerOverview"
         android:text="Lægekartotek" />
 
     <Button
         android:id="@+id/btnPatientOverview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="handleOverview"
+        android:onClick="handlePatientOverview"
         android:text="Patientkartotek" />
 
     <Button
