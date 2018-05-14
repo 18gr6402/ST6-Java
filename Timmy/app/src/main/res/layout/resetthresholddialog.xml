@@ -1,9 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".dk.gr6402.controller.ResetThresholdDialogCtrl">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/symptomsLowerThresholdTxt"
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:text="Nedre tærskelværdi symptomer:" />
+
+    <TextView
+        android:id="@+id/symptomsLowerThresholdLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/symptomsUpperThresholdTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Øvre tærskelværdi symptomer:" />
+
+    <TextView
+        android:id="@+id/symptomsUpperThresholdLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/mpiLowerThresholdTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nedre tærskelværdi MPI:" />
+
+    <TextView
+        android:id="@+id/mpiLowerThresholdLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/mpiUpperThresholdTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Øvre tærskelværdi MPI:" />
+
+    <TextView
+        android:id="@+id/mpiUpperThresholdLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reset tærskelværdier"
+        android:onClick="handleReset"/>
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Annullér"
+        android:onClick="handleCancel"/>
+</LinearLayout>

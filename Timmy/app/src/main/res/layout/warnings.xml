@@ -1,9 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="20dp"
     tools:context=".dk.gr6402.controller.WarningsCtrl">
 
-</android.support.constraint.ConstraintLayout>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+            <TableLayout
+                android:id="@+id/warningTable"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:isScrollContainer="true"
+                android:padding="10dip">
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/dateColumn"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Dato:  "/>
+
+                    <TextView
+                        android:id="@+id/cprColumn"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="CPR:  "/>
+
+                </TableRow>
+            </TableLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/cprTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CPR:" />
+
+        <TextView
+            android:id="@+id/cprLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/firstNameTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fornavn:"/>
+
+        <TextView
+            android:id="@+id/firstNameLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""/>
+
+        <TextView
+            android:id="@+id/lastNameTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Efternavn:"/>
+
+        <TextView
+            android:id="@+id/lastNameLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/nyhaTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NYHA:" />
+
+        <TextView
+            android:id="@+id/nyhaLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/symptomsWarningTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Symptom alarmværdi:" />
+
+        <TextView
+            android:id="@+id/symptomsWarningLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/mpiWarningTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MPI alarmværdi:" />
+
+        <TextView
+            android:id="@+id/mpiWarningLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/symptomTimeChart"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/mpiTimeChart"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tilbage"
+            android:onClick="handleBack"/>
+
+        <Button
+            android:id="@+id/btnInspectMonitoring"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Inspicer monitorering"
+            android:onClick="handleInspectMonitoring"/>
+
+    </LinearLayout>
+</LinearLayout>

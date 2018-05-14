@@ -8,9 +8,102 @@
     android:padding="20dp"
     tools:context=".dk.gr6402.controller.GuideCtrl">
 
+
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/guideTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Guide i opsamling af SCG-signal:" />
+
+    <TextView
+        android:id="@+id/step1Txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1: Tryk på knappen “Start Måling” hvorefter en timer starter (INDSÆT SKÆRMBILLEDE)"/>
+
+    <ImageView
+        android:id="@+id/step1Img"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        app:srcCompat="@android:color/holo_green_dark" />
+
+    <TextView
+        android:id="@+id/step2Txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2: Placer herefter smartphonen ved brystbenet som vist på billedet (INDSÆT BILLEDE)"/>
+
+    <ImageView
+        android:id="@+id/step2Img"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        app:srcCompat="@android:color/holo_green_dark" />
+
+    <TextView
+        android:id="@+id/step3Txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="3: Lig stille! (INDSÆT BILLEDE)"/>
+
+    <ImageView
+        android:id="@+id/step3Img"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        app:srcCompat="@android:color/holo_green_dark" />
+
+    <TextView
+        android:id="@+id/step4Txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="4: Når du hører 3 “bip” og mærker en vibration er dette indikation for at målingen er startet"/>
+
+    <TextView
+        android:id="@+id/step5Txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="5: Når du hører 1 “bip” indikerer det, at målingen er afsluttet"/>
+
+    <TextView
+        android:id="@+id/step6Txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="6: Vælge om målingen er blevet foretaget korrekt (INDSÆT SKÆRMBILLEDE). Hvis du hostede eller på anden måde bevægede dig under målingen, bør du her trykke nej og foretage en ny måling."/>
+
+    <ImageView
+        android:id="@+id/step6Img"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        app:srcCompat="@android:color/holo_green_dark" />
+
+    <TextView
+        android:id="@+id/step7Txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="7: Hvis målingen var korrekt, skal du nu indberette symptomer (jo højere tal jo værre  symptomer) og trykke “OK” for at indsende symptomer og SCG-opsamling. (INDSÆT SKÆRMBILLEDE)"/>
+
+    <ImageView
+        android:id="@+id/step7Img"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        app:srcCompat="@android:color/holo_green_dark" />
+
+    <TextView
+        android:id="@+id/step8Txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="8: Hvis data er indsendt korrekt, føres du tilbage til hovedmenuen, ellers dukker en fejlmeddelelse op."/>
+
+    <ImageView
+        android:id="@+id/step8Img"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        app:srcCompat="@android:color/holo_green_dark" />
+
+    <Button
+        android:id="@+id/btnOK"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="OK" />
 </LinearLayout>
