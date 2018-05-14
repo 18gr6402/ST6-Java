@@ -20,9 +20,10 @@ import com.example.gr6402.timmy.dk.gr6402.model.Patient;
 import com.example.gr6402.timmy.dk.gr6402.model.Practitioner;
 import com.example.gr6402.timmy.dk.gr6402.model.User;
 import com.example.gr6402.timmy.dk.gr6402.myinterface.DatabaseOperations;
+import com.example.gr6402.timmy.dk.gr6402.myinterface.DatabaseTask;
 
 
-public class LoginCtrl extends AppCompatActivity {
+public class LoginCtrl extends AppCompatActivity implements DatabaseOperations{
     // objekter i viewet defineres her som attributter, med type og id på objektet (vores eget valg).
     public CheckBox cbCheckPractitioner;
     public TextView clinincText;
@@ -77,25 +78,23 @@ login. Udføre den tilhørende handling for intent af næste menu vindue.
         Intent i = new Intent(this,MenuCtrl.class);
         if (cbCheckPractitioner.isChecked()) {
 
+            Practitioner loginUser = new Practitioner(Integer.parseInt(userNameField.getText().toString()), true); //instancering af lægen, dummy todo mangler hente fra databasesjovet
+            i.putExtra("PractitionerTag",(Parcelable) loginUser);
+
+            }
+
+            else {
             String userName = userNameField.getText().toString();
             String password = passwordField.getText().toString();
             String type = "login";
 
-            Practitioner loginUser = new Practitioner(Integer.parseInt(userNameField.getText().toString()), true); //instancering af lægen, dummy todo mangler hente fra databasesjovet
-            i.putExtra("PractitionerTag",(Parcelable) loginUser);
-            }
-
-            else {
-
+            DatabaseTask databaseTask = new DatabaseTask(this);
+            databaseTask.execute(type,userName,password);
 
             Patient loginUser = new Patient(Integer.parseInt(userNameField.getText().toString()),"klasse 4",12, 4); //instancering af patient, dummy todo mangler hente fra databasesjovet
             i.putExtra("PatientTag",(Parcelable) loginUser);
+            //startActivity(i);
         }
-
-        DatabaseOperations databaseOperations = new DatabaseOperations(this);
-        databaseOperations.execute(type,userName,password);
-
-        startActivity(i);
     }
 
 /*
@@ -106,4 +105,17 @@ login. Udføre den tilhørende handling for intent af næste menu vindue.
         Intent in_newview = new Intent(this, NewCtrl.class);
         startActivity(in_newview);
     }
+
+    @Override
+    public void onTaskCompleted(String output) {
+        Intent i = new Intent(this,MenuCtrl.class);
+        System.out.println("onTaskCompleted i LoginCtrl");
+    //    startActivity(i);
+
+        Patient loginUser = new Patient(Integer.parseInt(userNameField.getText().toString()),"klasse 4",12, 4); //instancering af patient, dummy todo mangler hente fra databasesjovet
+        i.putExtra("PatientTag",(Parcelable) loginUser);
+        System.out.println(output);
+        startActivity(i);
+    }
+
 }
