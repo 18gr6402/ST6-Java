@@ -1,5 +1,7 @@
 package com.example.gr6402.timmy.dk.gr6402.controller;
 
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -36,6 +38,9 @@ public class EditCtrl extends AppCompatActivity{
     private Button btnCancel;
     private Practitioner loginPractitioner;
     private Patient loginPatient;
+    private Patient selectedPatient;
+    private Bundle bun;
+    private int val;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,40 +64,68 @@ public class EditCtrl extends AppCompatActivity{
         btnOk = (Button) findViewById(R.id.btnOk);
         btnCancel = (Button) findViewById(R.id.btnCancel);
 
+        // hvor kommer vi fra profile (val = 1) eller overview (val = 0)
+        bun=getIntent().getExtras();
+        val=bun.getInt("VAL");
         //get intent
         loginPractitioner = (Practitioner) getIntent().getParcelableExtra("PractitionerTag");
-        loginPatient = (Patient) getIntent().getParcelableExtra("PatientTag");
+        if(val == 1) {
+            loginPatient = (Patient) getIntent().getParcelableExtra("PatientTag");
+        }else if(val==0){
+            selectedPatient = (Patient) getIntent().getParcelableExtra("selectedPatienTag");
+        }
+
+
+        showDetails();
     }
 
 
     public void showDetails(){
+        if(val==1) {
+            cprTxt.setVisibility(View.GONE);
+            cprField.setVisibility(View.GONE);
+            cprTxt2.setVisibility(View.GONE);
+            cprField2.setVisibility(View.GONE);
+            nyhaTxt.setVisibility(View.GONE);
+            nyhaChoice.setVisibility(View.GONE);
+            btnResetThreshold.setVisibility(View.GONE);
 
-        if (loginPatient != null) {
+            if (loginPatient != null) {
             // todo get fornavn, efternavn og password fra database gennem Patient
             loginPatient.setFirstName("Bo");            //Dummydata todo slet
             loginPatient.setLastName("Hansen");         //Dummydata todo slet
             loginPatient.setPassword("bokode");         //Dummydata todo slet
             Toast.makeText(this, "Rediger Patient profiloplysninger", Toast.LENGTH_LONG).show();
-            cprLabel.setText(loginPatient.getCpr().toString());
-            employmentIDText.setVisibility(View.GONE);
-            employmentIDLabel.setVisibility(View.GONE);
+
             firstNameField.setText(loginPatient.getFirstName());
             lastNameField.setText(loginPatient.getLastName());
-            passwordField.setText(loginPatient.getPassword());
-        }
-        else{
+
+            } else{
             // todo get fornavn, efternavn og password fra database gennem Practitioner
             loginPractitioner.setFirstName("Steffen");      //Dummydata todo slet
             loginPractitioner.setLastName("Jensen");        //Dummydata todo slet
             loginPractitioner.setPassword("steffenkode");   //Dummydata todo slet
             Toast.makeText(this,"Rediger Læge profiloplysninger", Toast.LENGTH_LONG).show();
-            cprText.setVisibility(View.GONE);
-            cprLabel.setVisibility(View.GONE);
-            employmentIDLabel.setText(loginPractitioner.getEmploymentID().toString());
-            firstNameLabel.setText(loginPractitioner.getFirstName());
-            lastNameLabel.setText(loginPractitioner.getLastName());
-            passwordLabel.setText(loginPractitioner.getPassword());
+
+            firstNameField.setText(loginPractitioner.getFirstName());
+            lastNameField.setText(loginPractitioner.getLastName());
+            }
+        }else if (val==0){
+            firstNameTxt.setVisibility(View.GONE);
+            firstNameField.setVisibility(View.GONE);
+            lastNameTxt.setVisibility(View.GONE);
+            lastNameField.setVisibility(View.GONE);
+            passwordTxt.setVisibility(View.GONE);
+            passwordField.setVisibility(View.GONE);
+            passwordTxt2.setVisibility(View.GONE);
+            passwordField2.setVisibility(View.GONE);
+
+            // todo læs cpr fra selectedPatient og sæt
+            //cprField.setText(selectedPatient.getCpr());
+            //cprField2.setText(selectedPatient.getCpr());
+            // todo læs nyha fra database
         }
+
     }
 
     public void handleResetThreshold(View view){
@@ -104,10 +137,19 @@ public class EditCtrl extends AppCompatActivity{
     }
 
     public void handleCancel(View view){
-
+        Intent i;
+        if (val == 1) {
+            i = new Intent(this, ProfileCtrl.class);
+            if (loginPatient != null) {
+                i.putExtra("PatientTag", (Parcelable) loginPatient);
+            } else {
+                i.putExtra("PractitionerTag", (Parcelable) loginPractitioner);
+            }
+            startActivity(i);
+        } else if (val==0){
+            i = new Intent(this, OverviewCtrl.class);
+            i.putExtra("PractitionerTag", (Parcelable) loginPractitioner);
+            startActivity(i);
+        }
     }
-
-
-
-
 }

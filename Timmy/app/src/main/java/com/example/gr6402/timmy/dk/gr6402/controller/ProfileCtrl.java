@@ -28,6 +28,7 @@ public class ProfileCtrl extends AppCompatActivity {
     private Practitioner loginPractitioner;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,7 @@ public class ProfileCtrl extends AppCompatActivity {
         //get intent
         loginPractitioner = (Practitioner) getIntent().getParcelableExtra("PractitionerTag");
         loginPatient = (Patient) getIntent().getParcelableExtra("PatientTag");
+
 
         showDetails();
     }
@@ -85,6 +87,11 @@ public class ProfileCtrl extends AppCompatActivity {
 
     public void handleUpdate(View view){
         Intent i = new Intent(this,EditCtrl.class);
+        //til at fortælle vi kommer fra profile (val = 1) og ikke patientOverview (val = 0)
+        Bundle bundle = new Bundle();
+        bundle.putInt("VAL", 1);
+        i.putExtras(bundle);
+
         if (loginPatient != null) {
             i.putExtra("PatientTag",(Parcelable) loginPatient);
         }
