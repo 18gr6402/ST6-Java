@@ -1,9 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="20dp"
     tools:context=".dk.gr6402.controller.OverviewCtrl">
 
-</android.support.constraint.ConstraintLayout>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+            <TableLayout
+                android:id="@+id/overviewTable"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:isScrollContainer="true"
+                android:padding="10dip">
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ok"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="bye"/>
+                </TableRow>
+            </TableLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/employmentIDTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ansættelses ID:" />
+
+        <TextView
+            android:id="@+id/employmentIDLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/cprTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CPR-nummer:" />
+
+        <TextView
+            android:id="@+id/cprLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/firstNameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fornavn:" />
+
+        <TextView
+            android:id="@+id/firstNameLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/lastNameTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Efternavn:" />
+
+        <TextView
+            android:id="@+id/lastNameLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/nyhaTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NYHA-klassifikation:" />
+
+        <TextView
+            android:id="@+id/nyhaLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/mpiThresholdTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MPI tærskelværdi:" />
+
+        <TextView
+            android:id="@+id/mpiThresholdLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <com.jjoe64.graphview.GraphView
+            android:layout_width="match_parent"
+            android:layout_height="200dip"
+            android:id="@+id/graph" />
+
+    </LinearLayout>
+</LinearLayout>

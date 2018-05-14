@@ -1,9 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".dk.gr6402.controller.SymptomsCtrl">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/anginaTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Brystsmerter:" />
+
+    <Spinner
+        android:id="@+id/anginaChoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"/>
+
+    <TextView
+        android:id="@+id/dyspneaTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Åndenød:" />
+
+    <Spinner
+        android:id="@+id/dyspneaChoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"/>
+
+    <TextView
+        android:id="@+id/fatigueTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Træthed:" />
+
+    <Spinner
+        android:id="@+id/fatigueChoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"/>
+
+    <TextView
+        android:id="@+id/weightTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vægt:" />
+
+    <EditText
+        android:id="@+id/weightField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/otherTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Andet:" />
+
+    <EditText
+        android:id="@+id/otherField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:text=""/>
+
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:onClick="handleOk"/>
+
+</LinearLayout>

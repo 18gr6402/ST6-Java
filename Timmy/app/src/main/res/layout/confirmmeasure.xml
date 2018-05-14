@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".dk.gr6402.controller.ConfirmMeasureCtrl">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/confirmTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Blev målingen korrekt udført?" />
+
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bekræft"
+        android:onClick="handleConfirm"/>
+
+    <Button
+        android:id="@+id/btnRetake"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tag ny måling"
+        android:onClick="handleRetake"/>
+
+</LinearLayout>
