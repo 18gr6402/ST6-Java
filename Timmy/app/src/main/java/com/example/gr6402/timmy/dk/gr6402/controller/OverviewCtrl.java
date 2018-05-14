@@ -71,7 +71,7 @@ public class OverviewCtrl extends AppCompatActivity {
         btnDelete = (Button) findViewById(R.id.btnDelete);
         btnBack = (Button) findViewById(R.id.btnBack);
     }
-    
+
 
     public void handleInspectMonitoring(View view){
 
