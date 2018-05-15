@@ -80,7 +80,7 @@ public class OverviewCtrl extends AppCompatActivity {
         btnDelete = (Button) findViewById(R.id.btnDelete);
         btnBack = (Button) findViewById(R.id.btnBack);
 
-        // hvor kommer vi fra: menu:lægekartotek (val = 0) eller menu:patientkatotek (val = 1)
+        // hvor kommer vi fra: menu:lægekartotek (val = 0) eller menu:patientkatotek/Edit (val = 1)
         bun=getIntent().getExtras();
         val=bun.getInt("VAL");
         //get intent
