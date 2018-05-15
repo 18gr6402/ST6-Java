@@ -18,8 +18,7 @@
                 android:id="@+id/overviewTable"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:isScrollContainer="true"
-                android:padding="10dip">
+                android:isScrollContainer="true">
 
                 <TableRow
                     android:layout_width="fill_parent"
@@ -43,128 +42,133 @@
             </TableLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
+    <ScrollView
+        android:layout_width="179dp"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
-        <TextView
-            android:id="@+id/employmentIDTxt"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Ansættelses ID:" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/employmentIDLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="" />
+            <TextView
+                android:id="@+id/employmentIDTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ansættelses ID:" />
 
-        <TextView
-            android:id="@+id/cprTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="CPR-nummer:" />
+            <TextView
+                android:id="@+id/employmentIDLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="" />
 
-        <TextView
-            android:id="@+id/cprLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="" />
+            <TextView
+                android:id="@+id/cprTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CPR-nummer:" />
 
-        <TextView
-            android:id="@+id/firstNameText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Fornavn:" />
+            <TextView
+                android:id="@+id/cprLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="" />
 
-        <TextView
-            android:id="@+id/firstNameLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="" />
+            <TextView
+                android:id="@+id/firstNameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fornavn:" />
 
-        <TextView
-            android:id="@+id/lastNameTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Efternavn:" />
+            <TextView
+                android:id="@+id/firstNameLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="" />
 
-        <TextView
-            android:id="@+id/lastNameLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="" />
+            <TextView
+                android:id="@+id/lastNameTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Efternavn:" />
 
-        <TextView
-            android:id="@+id/nyhaTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="NYHA-klassifikation:" />
+            <TextView
+                android:id="@+id/lastNameLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="" />
 
-        <TextView
-            android:id="@+id/nyhaLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="" />
+            <TextView
+                android:id="@+id/nyhaTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NYHA-klassifikation:" />
 
-        <TextView
-            android:id="@+id/mpiThresholdTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MPI tærskelværdi:" />
+            <TextView
+                android:id="@+id/nyhaLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="" />
 
-        <TextView
-            android:id="@+id/mpiThresholdLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="" />
-        <TextView
-            android:id="@+id/mpiTimeChartTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MPI over tid:" />
+            <TextView
+                android:id="@+id/mpiThresholdTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MPI tærskelværdi:" />
 
-        <com.jjoe64.graphview.GraphView
-            android:id="@+id/mpiTimeChart"
-            android:layout_width="match_parent"
-            android:layout_height="100dp" />
+            <TextView
+                android:id="@+id/mpiThresholdLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="" />
 
-        <Button
-            android:id="@+id/btnInspectMonitorering"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="handleInspectMonitoring"
-            android:text="Inspicer monitorering" />
+            <TextView
+                android:id="@+id/mpiTimeChartTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MPI over tid:" />
 
-        <Button
-            android:id="@+id/btnAdd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="handleAdd"
-            android:text="Tilføj" />
+            <com.jjoe64.graphview.GraphView
+                android:id="@+id/mpiTimeChart"
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
 
-        <Button
-            android:id="@+id/btnEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="handleEdit"
-            android:text="Rediger" />
+            <Button
+                android:id="@+id/btnInspectMonitorering"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="handleInspectMonitoring"
+                android:text="Inspicer monitorering" />
 
-        <Button
-            android:id="@+id/btnDelete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="handleDelete"
-            android:text="Slet" />
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="handleAdd"
+                android:text="Tilføj" />
 
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="handleBack"
-            android:text="Tilbage" />
+            <Button
+                android:id="@+id/btnEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="handleEdit"
+                android:text="Rediger" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="handleDelete"
+                android:text="Slet" />
+
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="handleBack"
+                android:text="Tilbage" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
