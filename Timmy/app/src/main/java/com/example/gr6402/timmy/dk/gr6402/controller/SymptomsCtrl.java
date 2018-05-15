@@ -44,7 +44,7 @@ public class SymptomsCtrl extends AppCompatActivity {
         otherField = (EditText) findViewById(R.id.otherField);
         btnOk = (Button) findViewById(R.id.btnOk);
 
-        //get intent, henter pakkerne der sendes fra menuen
+        //get intent, henter pakkerne der sendes fra MeasureCtrl
         loginPatient = (Patient) getIntent().getParcelableExtra("PatientTag");
 
         //TODO Hent symptomer fra dagen før og indsæt i tekstfelterne, således disse kan genbruges.
