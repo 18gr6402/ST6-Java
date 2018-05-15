@@ -64,7 +64,7 @@ public class InspectMonitoringCtrl extends AppCompatActivity {
             startActivity(i);
         }
         else if (val==0){
-            i = new Intent(this, MenuCtrl.class);
+            i = new Intent(this, OverviewCtrl.class);
             i.putExtra("PractitionerTag", (Parcelable) loginPractitioner);
             startActivity(i);
         }

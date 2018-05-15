@@ -1,5 +1,7 @@
 package com.example.gr6402.timmy.dk.gr6402.controller;
 
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +12,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.gr6402.timmy.R;
+import com.example.gr6402.timmy.dk.gr6402.model.Patient;
+import com.example.gr6402.timmy.dk.gr6402.model.Practitioner;
 
 public class NewCtrl extends AppCompatActivity {
 
@@ -30,6 +34,8 @@ public class NewCtrl extends AppCompatActivity {
     private EditText passwordField2;
     private Button btnOk;
     private Button btnCancel;
+    private Practitioner loginPractitioner;
+    private Patient loginPatient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,16 +59,35 @@ public class NewCtrl extends AppCompatActivity {
         btnOk = (Button) findViewById(R.id.btnOk);
         btnCancel = (Button) findViewById(R.id.btnCancel);
     }
-    public void checkPractitioner(View view){
 
+
+    public void checkPractitioner(View view){
+        if (cbCheckPractitioner.isChecked()) {
+            cprTxt.setVisibility(View.GONE);
+            cprField.setVisibility(View.GONE);
+        }
+        else {
+            clinicTxt.setVisibility(View.GONE);
+            clinicChoice.setVisibility(View.GONE);
+            employmentIDTxt.setVisibility(View.GONE);
+            employmentIDField.setVisibility(View.GONE);
+        }
     }
 
     public void handleOk(View view){
-
+        Intent i = new Intent(this, MenuCtrl.class);
+        if (cbCheckPractitioner.isChecked()) {
+            Practitioner loginUser = new Practitioner(Integer.parseInt(employmentIDField.getText().toString()), false,1); //instancering af lægen, dummy todo mangler at gemme ny læge i databasen
+            i.putExtra("PractitionerTag", (Parcelable) loginUser);
+        } else {
+            Patient loginUser = new Patient(Integer.parseInt(cprField.getText().toString()), "klasse 4", 12, 4); //instancering af patient, dummy todo mangler at gemme ny patient i databasen
+            i.putExtra("PatientTag", (Parcelable) loginUser);
+        }
+        startActivity(i);
     }
 
     public void handleCancel(View view){
-
+        Intent i = new Intent(this, LoginCtrl.class);
+        startActivity(i);
     }
-
 }
