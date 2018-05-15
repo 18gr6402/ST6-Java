@@ -10,13 +10,18 @@ public class Practitioner extends User implements Parcelable {
     private Boolean administrator;
 
 
+
+    private Integer clinicID;
+
+
     //constructors
     public Practitioner() {
     }
 
-    public Practitioner(int employmentID, Boolean administrator){
+    public Practitioner(int employmentID, Boolean administrator, int clinicID){
         this.employmentID =  employmentID;
         this.administrator = administrator;
+        this.clinicID = clinicID;
     }
 
 
@@ -37,11 +42,19 @@ public class Practitioner extends User implements Parcelable {
         this.administrator = administrator;
     }
 
+    public Integer getClinincID() {
+        return clinicID;
+    }
+
+    public void setClinincID(Integer clinincID) {
+        this.clinicID = clinincID;
+    }
 
     // parcelable part
     protected Practitioner(Parcel in) {
         employmentID = in.readByte() == 0x00 ? null : in.readInt();
         administrator = in.readByte() != 0;
+        clinicID = in.readByte() == 0x00 ? null : in.readInt();
     }
 
     @Override
@@ -62,6 +75,12 @@ public class Practitioner extends User implements Parcelable {
         }
         else {
             dest.writeByte((byte) (administrator ? 1 : 0));
+        }
+        if (clinicID == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeInt(clinicID);
         }
     }
 
