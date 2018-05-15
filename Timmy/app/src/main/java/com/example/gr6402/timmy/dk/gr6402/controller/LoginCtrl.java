@@ -75,47 +75,52 @@ Undersøger om checkBox cbChechPractitioner er valgt og læser dataen fra felter
 login. Udføre den tilhørende handling for intent af næste menu vindue.
  */
     public void handleLogin (View view){
-        Intent i = new Intent(this,MenuCtrl.class);
+        String userName = userNameField.getText().toString();
+        String password = passwordField.getText().toString();
+        String type = "login";
         if (cbCheckPractitioner.isChecked()) {
-
-            Practitioner loginUser = new Practitioner(Integer.parseInt(userNameField.getText().toString()), true); //instancering af lægen, dummy todo mangler hente fra databasesjovet
-            i.putExtra("PractitionerTag",(Parcelable) loginUser);
-
+            String clinicID = "1"; //Dummy data
+            DatabaseTask databaseTask = new DatabaseTask(this);
+            databaseTask.execute(type,userName,password,clinicID);
             }
 
             else {
-            String userName = userNameField.getText().toString();
-            String password = passwordField.getText().toString();
-            String type = "login";
-
             DatabaseTask databaseTask = new DatabaseTask(this);
             databaseTask.execute(type,userName,password);
-
-            Patient loginUser = new Patient(Integer.parseInt(userNameField.getText().toString()),"klasse 4",12, 4); //instancering af patient, dummy todo mangler hente fra databasesjovet
-            i.putExtra("PatientTag",(Parcelable) loginUser);
-            //startActivity(i);
         }
+
     }
 
 /*
 Åbner vinduet for registrering af ny bruger.
  */
     public void handleNewUser(View view){
-
         Intent in_newview = new Intent(this, NewCtrl.class);
         startActivity(in_newview);
     }
 
     @Override
     public void onTaskCompleted(String output) {
-        Intent i = new Intent(this,MenuCtrl.class);
-        System.out.println("onTaskCompleted i LoginCtrl");
-    //    startActivity(i);
-
-        Patient loginUser = new Patient(Integer.parseInt(userNameField.getText().toString()),"klasse 4",12, 4); //instancering af patient, dummy todo mangler hente fra databasesjovet
-        i.putExtra("PatientTag",(Parcelable) loginUser);
-        System.out.println(output);
-        startActivity(i);
+        if (output.equals("TRUE")) {
+            Intent i = new Intent(this, MenuCtrl.class);
+            if (cbCheckPractitioner.isChecked()) {
+                Practitioner loginUser = new Practitioner(Integer.parseInt(userNameField.getText().toString()), false); //instancering af lægen, dummy todo mangler hente fra databasesjovet
+                i.putExtra("PractitionerTag", (Parcelable) loginUser);
+            } else {
+                Patient loginUser = new Patient(Integer.parseInt(userNameField.getText().toString()), "klasse 4", 12, 4); //instancering af patient, dummy todo mangler hente fra databasesjovet
+                i.putExtra("PatientTag", (Parcelable) loginUser);
+            }
+            startActivity(i);
+        }
+        else if(output.equals("administrator")){
+            Intent i = new Intent(this, MenuCtrl.class);
+            Practitioner loginUser = new Practitioner(Integer.parseInt(userNameField.getText().toString()), true); //instancering af lægen, dummy todo mangler hente fra databasesjovet
+            i.putExtra("PractitionerTag", (Parcelable) loginUser);
+            startActivity(i);
+        }
+        else if (output.equals("FALSE")){
+            Toast.makeText(this, "Forkert loginoplysninger", Toast.LENGTH_LONG).show();
+        }
     }
 
 }

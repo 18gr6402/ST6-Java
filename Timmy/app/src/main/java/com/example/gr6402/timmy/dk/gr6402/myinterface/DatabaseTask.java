@@ -37,7 +37,7 @@ public class DatabaseTask extends AsyncTask<String,Void,String> {
                 if(params.length == 4){
                     clinicID = params[3];
                 }
-                URL url = new URL("http://7da6074e.ngrok.io/login.php");
+                URL url = new URL("http://af1af414.ngrok.io/login.php");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
