@@ -47,9 +47,13 @@ public class MenuCtrl extends AppCompatActivity {
         if (loginPatient != null) {
             Toast.makeText(this, "Logget ind som Patient", Toast.LENGTH_LONG).show();
         } else{
-            Toast.makeText(this,"Logget ind som Læge", Toast.LENGTH_LONG).show();
+            Boolean adm = loginPractitioner.getAdministrator();
+            if (!adm){
+                Toast.makeText(this, "Logget ind som Læge", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "Logget ind som Administrator", Toast.LENGTH_LONG).show();
+            }
         }
-
     }
 
 
