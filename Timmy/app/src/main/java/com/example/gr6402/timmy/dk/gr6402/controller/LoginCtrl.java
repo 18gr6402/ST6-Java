@@ -104,7 +104,7 @@ login. Udføre den tilhørende handling for intent af næste menu vindue.
         if (output.equals("TRUE")) {
             Intent i = new Intent(this, MenuCtrl.class);
             if (cbCheckPractitioner.isChecked()) {
-                Practitioner loginUser = new Practitioner(Integer.parseInt(userNameField.getText().toString()), false); //instancering af lægen, dummy todo mangler hente fra databasesjovet
+                Practitioner loginUser = new Practitioner(Integer.parseInt(userNameField.getText().toString()), false,1); //instancering af lægen, dummy todo mangler hente fra databasesjovet
                 i.putExtra("PractitionerTag", (Parcelable) loginUser);
             } else {
                 Patient loginUser = new Patient(Integer.parseInt(userNameField.getText().toString()), "klasse 4", 12, 4); //instancering af patient, dummy todo mangler hente fra databasesjovet
@@ -114,7 +114,7 @@ login. Udføre den tilhørende handling for intent af næste menu vindue.
         }
         else if(output.equals("administrator")){
             Intent i = new Intent(this, MenuCtrl.class);
-            Practitioner loginUser = new Practitioner(Integer.parseInt(userNameField.getText().toString()), true); //instancering af lægen, dummy todo mangler hente fra databasesjovet
+            Practitioner loginUser = new Practitioner(Integer.parseInt(userNameField.getText().toString()), true,23); //instancering af lægen, dummy todo mangler hente fra databasesjovet
             i.putExtra("PractitionerTag", (Parcelable) loginUser);
             startActivity(i);
         }
