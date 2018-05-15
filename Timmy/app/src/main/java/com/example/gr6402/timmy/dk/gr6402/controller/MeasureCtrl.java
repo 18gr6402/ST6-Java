@@ -83,7 +83,7 @@ public class MeasureCtrl extends AppCompatActivity {
                 if(millisUntilFinished >=1000 && millisUntilFinished <=21000 ){
                     mStart.setVisibility(View.INVISIBLE);
                     countDown.setVisibility(View.INVISIBLE);
-                    sensorManager.registerListener(listener,accelerometer,SensorManager.SENSOR_DELAY_NORMAL);
+                    sensorManager.registerListener(listener,accelerometer,SensorManager.SENSOR_DELAY_FASTEST);
                     pulseView.setVisibility(View.VISIBLE);
                     pulseView.startPulse();
 
