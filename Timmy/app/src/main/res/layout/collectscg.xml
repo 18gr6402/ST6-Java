@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Vis guide"
-        android:onClick="handleViewGuide"/>
+        android:onClick="handleGuide"/>
 
     <Button
         android:id="@+id/btnMeasure"

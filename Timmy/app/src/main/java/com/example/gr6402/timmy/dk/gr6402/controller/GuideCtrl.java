@@ -21,7 +21,6 @@ public class GuideCtrl extends AppCompatActivity {
     private TextView step2Txt;
     private ImageView step2Img;
     private TextView step3Txt;
-    private ImageView step3Img;
     private TextView step4Txt;
     private TextView step5Txt;
     private TextView step6Txt;
@@ -47,7 +46,6 @@ public class GuideCtrl extends AppCompatActivity {
         step2Txt = (TextView) findViewById(R.id.step2Txt);
         step2Img = (ImageView) findViewById(R.id.step2Img);
         step3Txt = (TextView) findViewById(R.id.step3Txt);
-        step3Img = (ImageView) findViewById(R.id.step3Img);
         step4Txt = (TextView) findViewById(R.id.step4Txt);
         step5Txt = (TextView) findViewById(R.id.step5Txt);
         step6Txt = (TextView) findViewById(R.id.step6Txt);

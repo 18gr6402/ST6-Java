@@ -1,5 +1,7 @@
 package com.example.gr6402.timmy.dk.gr6402.controller;
 
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +11,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.gr6402.timmy.R;
+import com.example.gr6402.timmy.dk.gr6402.model.Patient;
+import com.example.gr6402.timmy.dk.gr6402.model.Practitioner;
 import com.jjoe64.graphview.GraphView;
 
 public class InspectMonitoringCtrl extends AppCompatActivity {
@@ -24,6 +28,10 @@ public class InspectMonitoringCtrl extends AppCompatActivity {
     private TextView symptomsTxt;
     private TextView symptomsLabel;
     private Button btnBack;
+    private Bundle bun;
+    private int val;
+    private Practitioner loginPractitioner;
+    private Patient selectedPatient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +48,25 @@ public class InspectMonitoringCtrl extends AppCompatActivity {
         symptomsTxt = (TextView) findViewById(R.id.symptomsTxt);
         symptomsLabel = (TextView) findViewById(R.id.symptomsLabel);
         btnBack = (Button) findViewById(R.id.btnBack);
-    }
+
+        // hvor kommer vi fra; practitioner warningsmenuen (val = 1) eller practitioner menuCtrl (val = 0)
+        bun = getIntent().getExtras();
+        val = bun.getInt("VAL");
+        loginPractitioner = (Practitioner) getIntent().getParcelableExtra("PractitionerTag");
+        selectedPatient = (Patient) getIntent().getParcelableExtra("SelectedPatientTag");
+        }
 
     public void handleBack  (View view){
-
+        Intent i;
+        if (val == 1) {
+            i = new Intent(this, WarningsCtrl.class);
+            i.putExtra("PractitionerTag", (Parcelable) loginPractitioner);
+            startActivity(i);
+        }
+        else if (val==0){
+            i = new Intent(this, MenuCtrl.class);
+            i.putExtra("PractitionerTag", (Parcelable) loginPractitioner);
+            startActivity(i);
+        }
     }
 }

@@ -16,7 +16,6 @@ public class CollectSCGCtrl extends AppCompatActivity {
     private Button btnMeasure;
     private Button btnBack;
     private Patient loginPatient;
-    private int val;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,7 @@ public class CollectSCGCtrl extends AppCompatActivity {
     }
 
 
-    public void handleViewGuide(View view) {
+    public void handleGuide(View view) {
         Intent i = new Intent(this, GuideCtrl.class);
         i.putExtra("PatientTag", (Parcelable) loginPatient);
         Bundle bundle = new Bundle();

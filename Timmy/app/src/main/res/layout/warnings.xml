@@ -122,12 +122,12 @@
         <com.jjoe64.graphview.GraphView
             android:id="@+id/symptomTimeChart"
             android:layout_width="match_parent"
-            android:layout_height="100dp" />
+            android:layout_height="50dp" />
 
         <com.jjoe64.graphview.GraphView
             android:id="@+id/mpiTimeChart"
             android:layout_width="match_parent"
-            android:layout_height="100dp" />
+            android:layout_height="50dp" />
 
         <Button
             android:id="@+id/btnBack"

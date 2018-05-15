@@ -1,5 +1,7 @@
 package com.example.gr6402.timmy.dk.gr6402.controller;
 
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +10,8 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.example.gr6402.timmy.R;
+import com.example.gr6402.timmy.dk.gr6402.model.Patient;
+import com.example.gr6402.timmy.dk.gr6402.model.Practitioner;
 import com.jjoe64.graphview.GraphView;
 
 import org.w3c.dom.Text;
@@ -33,6 +37,8 @@ public class WarningsCtrl extends AppCompatActivity {
     private GraphView mpiTimeChart;
     private Button btnBack;
     private Button btnInspectMonitoring;
+    private Practitioner loginPractitioner;
+    private Patient selectedPatient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +63,24 @@ public class WarningsCtrl extends AppCompatActivity {
         mpiTimeChart = (GraphView) findViewById(R.id.mpiTimeChart);
         btnBack = (Button) findViewById(R.id.btnBack);
         btnInspectMonitoring = (Button) findViewById(R.id.btnInspectMonitoring);
+
+        //get intent, henter pakkerne der sendes fra menuen
+        loginPractitioner = (Practitioner) getIntent().getParcelableExtra("PractitionerTag");
     }
 
     public void handleBack (View view){
-
+        Intent i = new Intent(this, MenuCtrl.class);
+        i.putExtra("PractitionerTag", (Parcelable) loginPractitioner);
+        startActivity(i);
     }
 
     public void handleInspectMonitoring (View view) {
-
+        Intent i = new Intent(this,InspectMonitoringCtrl.class);
+        i.putExtra("PractitionerTag", (Parcelable) loginPractitioner);
+        i.putExtra("SelectedPatientTag", (Parcelable) selectedPatient);
+        Bundle bundle = new Bundle();
+        bundle.putInt("VAL", 1); // fra  practitioner warnings viewet til inspect monitoring val=1
+        i.putExtras(bundle);
+        startActivity(i);
     }
 }
