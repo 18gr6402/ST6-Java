@@ -147,7 +147,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="handleAdd"
-                android:text="Tilføj" />
+                android:text="Tilføj patient" />
 
             <Button
                 android:id="@+id/btnEdit"

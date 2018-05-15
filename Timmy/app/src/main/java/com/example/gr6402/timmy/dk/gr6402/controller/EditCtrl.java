@@ -151,6 +151,9 @@ Føre bruger tilbage til forgående view og sender egne oplysninger med.
         } else if (val==0){
             i = new Intent(this, OverviewCtrl.class);
             i.putExtra("PractitionerTag", (Parcelable) loginPractitioner);
+            Bundle bundle = new Bundle();
+            bundle.putInt("VAL", 1);
+            i.putExtras(bundle);
             startActivity(i);
         }
     }

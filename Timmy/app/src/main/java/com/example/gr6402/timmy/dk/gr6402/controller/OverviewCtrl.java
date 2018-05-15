@@ -108,6 +108,7 @@ public class OverviewCtrl extends AppCompatActivity {
             mpiTimeChart.setVisibility(View.GONE);
             btnEdit.setVisibility(View.GONE);
             btnInspectMonitoring.setVisibility(View.GONE);
+            btnAdd.setText("Tilføj læge");
             userIDColumn.setText("ID:");
             // todo hent og build af data for læger i systemet under loginPractitioners clinincID
             // todo input i tabel
@@ -128,9 +129,9 @@ public class OverviewCtrl extends AppCompatActivity {
         i.putExtra("PractitionerTag", (Parcelable) loginPractitioner);
         Bundle bundle = new Bundle();
         if(val == 1) {
-            bundle.putInt("VAL", val);    // Patientkartotek til delete -> val = 1
+            bundle.putInt("VAL", val);    // Patientkartotek til add -> val = 1
         }else if(val == 0){
-            bundle.putInt("VAL", val);    // lægekartotek til delete -> val = 0
+            bundle.putInt("VAL", val);    // lægekartotek til add -> val = 0
         }
         i.putExtras(bundle);
         startActivity(i);
@@ -141,6 +142,9 @@ public class OverviewCtrl extends AppCompatActivity {
         Intent i = new Intent(this, EditCtrl.class);
         i.putExtra("PractitionerTag", (Parcelable) loginPractitioner);
         i.putExtra("selectedPatientTag", selectedPatient);
+        Bundle bundle = new Bundle();
+        bundle.putInt("VAL", 0);
+        i.putExtras(bundle);
         startActivity(i);
     }
 
