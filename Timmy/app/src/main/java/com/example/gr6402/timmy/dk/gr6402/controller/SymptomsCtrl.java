@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.gr6402.timmy.R;
 import com.example.gr6402.timmy.dk.gr6402.model.Patient;
+import com.example.gr6402.timmy.dk.gr6402.model.SCGMeasure;
 
 public class SymptomsCtrl extends AppCompatActivity {
 
@@ -27,6 +28,8 @@ public class SymptomsCtrl extends AppCompatActivity {
     private EditText otherField;
     private Button btnOk;
     private Patient loginPatient;
+    private SCGMeasure newSCG;
+    private SCGMeasure oldSCG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,8 @@ public class SymptomsCtrl extends AppCompatActivity {
 
         //get intent, henter pakkerne der sendes fra MeasureCtrl
         loginPatient = (Patient) getIntent().getParcelableExtra("PatientTag");
+        newSCG = (SCGMeasure) getIntent().getParcelableExtra("newSCGTag");
+
 
         //TODO Hent symptomer fra dagen før og indsæt i tekstfelterne, således disse kan genbruges.
     }

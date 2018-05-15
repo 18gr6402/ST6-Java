@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.gr6402.timmy.R;
 import com.example.gr6402.timmy.dk.gr6402.model.Patient;
+import com.example.gr6402.timmy.dk.gr6402.model.SCGMeasure;
 
 public class ConfirmMeasureCtrl extends AppCompatActivity {
 
@@ -17,6 +18,7 @@ public class ConfirmMeasureCtrl extends AppCompatActivity {
     private Button btnConfirm;
     private Button btnRetake;
     private Patient loginPatient;
+    private SCGMeasure newSCG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +30,13 @@ public class ConfirmMeasureCtrl extends AppCompatActivity {
 
         //get intent, henter pakkerne der sendes fra menuen
         loginPatient = (Patient) getIntent().getParcelableExtra("PatientTag");
+        newSCG = (SCGMeasure) getIntent().getParcelableExtra("newSCGTag");
     }
 
     public void handleConfirm(View view){
         Intent i = new Intent(this, SymptomsCtrl.class);
         i.putExtra("PatientTag", (Parcelable) loginPatient);
+        i.putExtra("newSCGTag", newSCG);
         startActivity(i);
     }
 

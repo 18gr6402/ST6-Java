@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.gr6402.timmy.R;
 import com.example.gr6402.timmy.dk.gr6402.model.Patient;
+import com.example.gr6402.timmy.dk.gr6402.model.SCGMeasure;
 import com.gigamole.library.PulseView;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class MeasureCtrl extends AppCompatActivity {
     private ArrayList<Float> zData = new ArrayList<Float>();
     private SensorManager sensorManager;
     private Sensor accelerometer;
-    private String results;
+    private SCGMeasure newSCG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +79,7 @@ public class MeasureCtrl extends AppCompatActivity {
         countDownTimer = new CountDownTimer(26000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                countDown.setText("Nedtælling"+ " " + (millisUntilFinished-20000)/1000);
+                countDown.setText("Nedtælling " + (millisUntilFinished-20000)/1000);
 
                 if(millisUntilFinished >=1000 && millisUntilFinished <=21000 ){
                     mStart.setVisibility(View.INVISIBLE);
@@ -86,17 +87,14 @@ public class MeasureCtrl extends AppCompatActivity {
                     sensorManager.registerListener(listener,accelerometer,SensorManager.SENSOR_DELAY_FASTEST);
                     pulseView.setVisibility(View.VISIBLE);
                     pulseView.startPulse();
-
                 } else if(millisUntilFinished<=24000 && millisUntilFinished>=21000) {
                     soundPool.play(sound1,1,1,0,0,1);
                 }
                 else if (millisUntilFinished>=0 && millisUntilFinished<=1000) {
                     countDown.setVisibility(View.INVISIBLE);
                 }
-
-
-
             }
+
 
             @Override
             public void onFinish() {
@@ -109,31 +107,23 @@ public class MeasureCtrl extends AppCompatActivity {
                 stopDetecting();
                 countDownTimer.cancel();
 
-                String results = TextUtils.join(",",zData); //Konverterer Arraylist til String
-                System.out.println("STRING TIL DATABASEN" + " " + results );
+                newSCG.setScg(TextUtils.join(",",zData)); //Konverterer Arraylist til String og sætter i nySCG
+                System.out.println("STRING TIL DATABASEN: " + newSCG.getScg() );
                 confirmMeasure();
-
-
             }
         };
         countDownTimer.start();
-
-
     }
-
 
 
     private SensorEventListener listener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent sensorEvent) {
-
             zData.add(sensorEvent.values[2]); //Her sættes z-værdien ind i zData, som er en Arraylist
-
         }
 
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
         }
     };
 
@@ -144,13 +134,9 @@ public class MeasureCtrl extends AppCompatActivity {
     private void confirmMeasure() {
         Intent i = new Intent(this, ConfirmMeasureCtrl.class);
         i.putExtra("PatientTag", (Parcelable) loginPatient);
-        Bundle bundle = new Bundle();
-        bundle.putString("SCG", results);
-        i.putExtras(bundle);
+        i.putExtra("newSCGTag", newSCG);
         startActivity(i);
     }
-
-
 }
 
 
