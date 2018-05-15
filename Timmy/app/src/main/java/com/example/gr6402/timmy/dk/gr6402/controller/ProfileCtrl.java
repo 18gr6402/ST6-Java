@@ -69,7 +69,6 @@ public class ProfileCtrl extends AppCompatActivity implements DatabaseOperations
     public void showDetails(String[] separated){
 
         if (loginPatient != null) {
-            // todo get fornavn, efternavn og password fra database gennem Patient
             loginPatient.setFirstName(separated[0]);
             loginPatient.setLastName(separated[1]);
             loginPatient.setPassword(separated[2]);
@@ -83,7 +82,6 @@ public class ProfileCtrl extends AppCompatActivity implements DatabaseOperations
             passwordLabel.setText(loginPatient.getPassword());
         }
         else{
-            // todo get fornavn, efternavn og password fra database gennem Practitioner
             loginPractitioner.setFirstName(separated[0]);
             loginPractitioner.setLastName(separated[1]);
             loginPractitioner.setPassword(separated[2]);
