@@ -38,7 +38,7 @@ public class MeasureCtrl extends AppCompatActivity {
     private ArrayList<Float> zData = new ArrayList<Float>();
     private SensorManager sensorManager;
     private Sensor accelerometer;
-    private SCGMeasure newSCG;
+    private SCGMeasure newSCG = new SCGMeasure(null,null,null,0,0,null,null,null,null);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +107,7 @@ public class MeasureCtrl extends AppCompatActivity {
                 stopDetecting();
                 countDownTimer.cancel();
 
-                newSCG.setScg(TextUtils.join(",",zData)); //Konverterer Arraylist til String og sætter i nySCG
+                newSCG.setScg(TextUtils.join(",",zData));//Konverterer Arraylist til String
                 System.out.println("STRING TIL DATABASEN: " + newSCG.getScg() );
                 confirmMeasure();
             }
