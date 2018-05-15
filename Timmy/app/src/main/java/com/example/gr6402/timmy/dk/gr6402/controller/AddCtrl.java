@@ -78,9 +78,11 @@ public class AddCtrl extends AppCompatActivity {
         i.putExtra("PractitionerTag", (Parcelable) loginPractitioner);
         Bundle bundle = new Bundle();
         if (val == 0) {
+            //TODO Den tilføjede læge skal gemmes i databasen
             bundle.putInt("VAL", val); // fra add practitioner til practitioner overview val=0
         }
         else if (val == 1) {
+            //TODO Den tilføjede patient skal gemmes i databasen
             bundle.putInt("VAL", val); //fra add patient til patient overview val=1
         }
         i.putExtras(bundle);

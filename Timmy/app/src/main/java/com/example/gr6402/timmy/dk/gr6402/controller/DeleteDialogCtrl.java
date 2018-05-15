@@ -57,7 +57,6 @@ public class DeleteDialogCtrl extends AppCompatActivity {
             employmentIDTxt.setVisibility(View.GONE);
             employmentIDLabel.setVisibility(View.GONE);
         }
-
     }
 
     public void handleOk(View view){
@@ -65,9 +64,11 @@ public class DeleteDialogCtrl extends AppCompatActivity {
         i.putExtra("PractitionerTag", (Parcelable) loginPractitioner);
         Bundle bundle = new Bundle();
         if (val == 0) {
+            //TODO Den valgte læge inkl. data skal slettes fra databasen.
             bundle.putInt("VAL", val); // fra delete practitioner til practitioner overview val=0
         }
         else if (val == 1) {
+            //TODO Den valgte patient inkl. data skal slettes fra databasen.
             bundle.putInt("VAL", val); //fra delete patient til patient overview val=1
         }
         i.putExtras(bundle);
