@@ -58,6 +58,7 @@ public class InspectMonitoringCtrl extends AppCompatActivity {
 
     public void handleBack  (View view){
         Intent i;
+        Bundle bundle = new Bundle();
         if (val == 1) {
             i = new Intent(this, WarningsCtrl.class);
             i.putExtra("PractitionerTag", (Parcelable) loginPractitioner);
@@ -66,6 +67,8 @@ public class InspectMonitoringCtrl extends AppCompatActivity {
         else if (val==0){
             i = new Intent(this, OverviewCtrl.class);
             i.putExtra("PractitionerTag", (Parcelable) loginPractitioner);
+            bundle.putInt("VAL", 1);
+            i.putExtras(bundle);
             startActivity(i);
         }
     }
