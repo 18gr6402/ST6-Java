@@ -12,8 +12,10 @@ import android.widget.Toast;
 import com.example.gr6402.timmy.R;
 import com.example.gr6402.timmy.dk.gr6402.model.Patient;
 import com.example.gr6402.timmy.dk.gr6402.model.Practitioner;
+import com.example.gr6402.timmy.dk.gr6402.myinterface.DatabaseOperations;
+import com.example.gr6402.timmy.dk.gr6402.myinterface.DatabaseTask;
 
-public class ProfileCtrl extends AppCompatActivity {
+public class ProfileCtrl extends AppCompatActivity implements DatabaseOperations{
 
     private TextView cprText;
     private TextView cprLabel;
@@ -49,18 +51,29 @@ public class ProfileCtrl extends AppCompatActivity {
         loginPractitioner = (Practitioner) getIntent().getParcelableExtra("PractitionerTag");
         loginPatient = (Patient) getIntent().getParcelableExtra("PatientTag");
 
+        String type = "profile";
+        if (loginPatient != null) {
+            String id = loginPatient.getCpr().toString();
+            DatabaseTask databaseTask = new DatabaseTask(this);
+            databaseTask.execute(type,id);
+        }
 
-        showDetails();
+        else {
+            String id = loginPractitioner.getEmploymentID().toString();
+            String clinicID = loginPractitioner.getClinincID().toString();
+            DatabaseTask databaseTask = new DatabaseTask(this);
+            databaseTask.execute(type,id,clinicID);
+        }
     }
 
-
-    public void showDetails(){
+    public void showDetails(String[] separated){
 
         if (loginPatient != null) {
             // todo get fornavn, efternavn og password fra database gennem Patient
-            loginPatient.setFirstName("Bo");            //Dummydata todo slet
-            loginPatient.setLastName("Hansen");         //Dummydata todo slet
-            loginPatient.setPassword("bokode");         //Dummydata todo slet
+            loginPatient.setFirstName(separated[0]);
+            loginPatient.setLastName(separated[1]);
+            loginPatient.setPassword(separated[2]);
+
             Toast.makeText(this, "Patient profiloplysninger", Toast.LENGTH_LONG).show();
             cprLabel.setText(loginPatient.getCpr().toString());
             employmentIDText.setVisibility(View.GONE);
@@ -71,9 +84,9 @@ public class ProfileCtrl extends AppCompatActivity {
         }
         else{
             // todo get fornavn, efternavn og password fra database gennem Practitioner
-            loginPractitioner.setFirstName("Steffen");      //Dummydata todo slet
-            loginPractitioner.setLastName("Jensen");        //Dummydata todo slet
-            loginPractitioner.setPassword("steffenkode");   //Dummydata todo slet
+            loginPractitioner.setFirstName(separated[0]);
+            loginPractitioner.setLastName(separated[1]);
+            loginPractitioner.setPassword(separated[2]);
             Toast.makeText(this,"Læge profiloplysninger", Toast.LENGTH_LONG).show();
             cprText.setVisibility(View.GONE);
             cprLabel.setVisibility(View.GONE);
@@ -115,4 +128,9 @@ public class ProfileCtrl extends AppCompatActivity {
         startActivity(i);
     }
 
+    @Override
+    public void onTaskCompleted(String output) {
+        String[] separated = output.split(",");
+        showDetails(separated);
+    }
 }

@@ -37,7 +37,7 @@ public class DatabaseTask extends AsyncTask<String,Void,String> {
                 if(params.length == 4){
                     clinicID = params[3];
                 }
-                URL url = new URL("http://af1af414.ngrok.io/login.php");
+                URL url = new URL("http://871ec2c2.ngrok.io/login.php");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -61,6 +61,47 @@ public class DatabaseTask extends AsyncTask<String,Void,String> {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
                 String result ="";
                 String line = "";
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if(type.equals("profile") ) {
+            try {
+                String id = params[1];
+                if(params.length == 3){
+                    clinicID = params[2];
+                }
+                URL url = new URL("http://871ec2c2.ngrok.io/getProfile.php");
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String post_data;
+                if(params.length == 2) {
+                    post_data = URLEncoder.encode("id", "UTF-8") + "=" + URLEncoder.encode(id, "UTF-8");
+                } else {
+                    post_data = URLEncoder.encode("clinicID", "UTF-8") + "=" + URLEncoder.encode(clinicID, "UTF-8") + "&"
+                            + URLEncoder.encode("id", "UTF-8") + "=" + URLEncoder.encode(id, "UTF-8");
+                }
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                String result ="";
+                Object line = "";
                 while ((line = bufferedReader.readLine()) != null) {
                     result += line;
                 }
