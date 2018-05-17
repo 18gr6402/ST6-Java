@@ -46,7 +46,7 @@ public class LoginCtrl extends AppCompatActivity implements DatabaseOperations, 
 
     private String[] name;
 
-    public Spinner clinicSpinner;
+    public Spinner clinicChoice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class LoginCtrl extends AppCompatActivity implements DatabaseOperations, 
         // forbinder java klassen med objektet i viewet
         cbCheckPractitioner = (CheckBox) findViewById(R.id.cbCheckPractitioner);
         clinicTxt = (TextView) findViewById(R.id.clinicTxt);
-        clinicSpinner = (Spinner) findViewById(R.id.clinicSpinner); //Here we define the spinner
+        clinicChoice = (Spinner) findViewById(R.id.clinicChoice); //Here we define the spinner
         userNameField = (EditText) findViewById(R.id.userNameField);
         passwordField = (EditText) findViewById(R.id.passwordField);
         btnNewUser = (Button) findViewById(R.id.btnNewUser);
@@ -77,7 +77,7 @@ public class LoginCtrl extends AppCompatActivity implements DatabaseOperations, 
 
     public void loadClinicsSpinner(String[] separated) {
         // Her forsøges at lave en spinner med dummy data
-        clinicSpinner.setOnItemSelectedListener(this); // Spinner click listener
+        clinicChoice.setOnItemSelectedListener(this); // Spinner click listener
 
         List<String> clinics = new ArrayList<String>();  // Spinner Drop down elements
         clinics.add("Vælg klinik");
@@ -92,7 +92,7 @@ public class LoginCtrl extends AppCompatActivity implements DatabaseOperations, 
         // dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // attaching data adapter to spinner
-        clinicSpinner.setAdapter(dataAdapter);
+        clinicChoice.setAdapter(dataAdapter);
     }
 
 
@@ -103,14 +103,14 @@ public class LoginCtrl extends AppCompatActivity implements DatabaseOperations, 
     public void checkPractitioner(View view){
         if (cbCheckPractitioner.isChecked()) {
             clinicTxt.setVisibility(View.VISIBLE);
-            clinicSpinner.setVisibility(View.VISIBLE);
+            clinicChoice.setVisibility(View.VISIBLE);
             userNameField.setText("Ansættelses ID");
             String type = "loadClinics";
             DatabaseTask databaseTask = new DatabaseTask(this);
             databaseTask.execute(type);
         }else {
             clinicTxt.setVisibility(View.GONE);
-            clinicSpinner.setVisibility(View.GONE);
+            clinicChoice.setVisibility(View.GONE);
             userNameField.setText("CPR");
         }
     }
@@ -132,7 +132,7 @@ login. Udføre den tilhørende handling for intent af næste menu vindue.
         String type = "login";
         if (cbCheckPractitioner.isChecked()) {
             // Vi definerer klinikID ud det den valgte klinik i spinneren
-            clinicID = separated[clinicSpinner.getSelectedItemPosition()+(clinicSpinner.getSelectedItemPosition()-1)];
+            clinicID = separated[clinicChoice.getSelectedItemPosition()+(clinicChoice.getSelectedItemPosition()-1)];
             DatabaseTask databaseTask = new DatabaseTask(this);
             databaseTask.execute(type,userName,password,clinicID);
             }

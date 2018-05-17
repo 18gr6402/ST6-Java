@@ -22,19 +22,23 @@
         android:id="@+id/clinicTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="Klinik ID:" />
 
     <Spinner
         android:id="@+id/clinicChoice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"/>
+        android:spinnerMode="dropdown"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/employmentIDTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="Ansættelses ID:" />
 
     <EditText
@@ -43,6 +47,7 @@
         android:layout_height="29dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:visibility="gone"
         android:text="" />
 
     <TextView

@@ -49,9 +49,9 @@ public class DatabaseTask extends AsyncTask<String,Void,String> {
                     post_data = URLEncoder.encode("id", "UTF-8") + "=" + URLEncoder.encode(id, "UTF-8") + "&"
                             + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8");
                 } else {
-                    post_data = URLEncoder.encode("clinicID", "UTF-8") + "=" + URLEncoder.encode(clinicID, "UTF-8") + "&"
-                            + URLEncoder.encode("id", "UTF-8") + "=" + URLEncoder.encode(id, "UTF-8") + "&"
-                            + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8");
+                    post_data = URLEncoder.encode("id", "UTF-8") + "=" + URLEncoder.encode(id, "UTF-8") + "&"
+                            + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8") + "&"
+                            + URLEncoder.encode("clinicID", "UTF-8") + "=" + URLEncoder.encode(clinicID, "UTF-8");
                 }
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
@@ -199,6 +199,56 @@ public class DatabaseTask extends AsyncTask<String,Void,String> {
                         + URLEncoder.encode("fatigue", "UTF-8") + "=" + URLEncoder.encode(fatigue, "UTF-8")+ "&"
                         + URLEncoder.encode("other", "UTF-8") + "=" + URLEncoder.encode(other, "UTF-8")+ "&"
                         + URLEncoder.encode("scgZ", "UTF-8") + "=" + URLEncoder.encode(scgZ, "UTF-8");
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                String result ="";
+                String line = "";
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if(type.equals("set_newuser")) {
+            try {
+                String id = params[1];
+                String firstName = params[2];
+                String lastName = params[3];
+                String password = params[4];
+                if(params.length == 6){
+                    clinicID = params[5];
+                }
+                URL url = new URL("http://9a7c2906.ngrok.io/setNew.php");
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String post_data;
+                if(params.length == 5) {
+                    post_data = URLEncoder.encode("id", "UTF-8") + "=" + URLEncoder.encode(id, "UTF-8") + "&"
+                            + URLEncoder.encode("firstName", "UTF-8") + "=" + URLEncoder.encode(firstName, "UTF-8") + "&"
+                            + URLEncoder.encode("lastName", "UTF-8") + "=" + URLEncoder.encode(lastName, "UTF-8") + "&"
+                            + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8");
+                } else {
+                    post_data = URLEncoder.encode("id", "UTF-8") + "=" + URLEncoder.encode(id, "UTF-8") + "&"
+                            + URLEncoder.encode("firstName", "UTF-8") + "=" + URLEncoder.encode(firstName, "UTF-8") + "&"
+                            + URLEncoder.encode("lastName", "UTF-8") + "=" + URLEncoder.encode(lastName, "UTF-8") + "&"
+                            + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8") + "&"
+                            + URLEncoder.encode("clinicID", "UTF-8") + "=" + URLEncoder.encode(clinicID, "UTF-8");
+                }
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
