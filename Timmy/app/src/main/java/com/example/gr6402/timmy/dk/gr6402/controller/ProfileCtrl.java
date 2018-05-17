@@ -17,9 +17,9 @@ import com.example.gr6402.timmy.dk.gr6402.myinterface.DatabaseTask;
 
 public class ProfileCtrl extends AppCompatActivity implements DatabaseOperations{
 
-    private TextView cprText;
+    private TextView cprTxt;
     private TextView cprLabel;
-    private TextView employmentIDText;
+    private TextView employmentIDTxt;
     private TextView employmentIDLabel;
     private TextView firstNameLabel;
     private TextView lastNameLabel;
@@ -37,10 +37,10 @@ public class ProfileCtrl extends AppCompatActivity implements DatabaseOperations
         setContentView(R.layout.profile);
 
         //forbind attributter og viewelementer
-        cprText = (TextView) findViewById(R.id.cprText);
+        cprTxt = (TextView) findViewById(R.id.cprTxt);
         cprLabel = (TextView) findViewById(R.id.cprLabel);
         employmentIDLabel = (TextView) findViewById(R.id.employmentIDLabel);
-        employmentIDText = (TextView) findViewById(R.id.employmentIDText);
+        employmentIDTxt = (TextView) findViewById(R.id.employmentIDTxt);
         firstNameLabel = (TextView) findViewById(R.id.firstNameLabel);
         lastNameLabel = (TextView) findViewById(R.id.lastNameLabel);
         passwordLabel = (TextView) findViewById(R.id.passwordLabel);
@@ -75,7 +75,7 @@ public class ProfileCtrl extends AppCompatActivity implements DatabaseOperations
 
             Toast.makeText(this, "Patient profiloplysninger", Toast.LENGTH_LONG).show();
             cprLabel.setText(loginPatient.getCpr().toString());
-            employmentIDText.setVisibility(View.GONE);
+            employmentIDTxt.setVisibility(View.GONE);
             employmentIDLabel.setVisibility(View.GONE);
             firstNameLabel.setText(loginPatient.getFirstName());
             lastNameLabel.setText(loginPatient.getLastName());
@@ -86,7 +86,7 @@ public class ProfileCtrl extends AppCompatActivity implements DatabaseOperations
             loginPractitioner.setLastName(separated[1]);
             loginPractitioner.setPassword(separated[2]);
             Toast.makeText(this,"Læge profiloplysninger", Toast.LENGTH_LONG).show();
-            cprText.setVisibility(View.GONE);
+            cprTxt.setVisibility(View.GONE);
             cprLabel.setVisibility(View.GONE);
             employmentIDLabel.setText(loginPractitioner.getEmploymentID().toString());
             firstNameLabel.setText(loginPractitioner.getFirstName());
