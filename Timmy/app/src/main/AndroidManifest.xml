@@ -32,7 +32,7 @@
         <activity android:name=".dk.gr6402.controller.DeleteDialogCtrl" />
         <activity android:name=".dk.gr6402.controller.InspectMonitoringCtrl" />
         <activity android:name=".dk.gr6402.controller.WarningsCtrl" />
-        <activity android:name=".dk.gr6402.controller.NewCtrl" />
+        <activity android:name=".dk.gr6402.controller.NewUserCtrl" />
         <activity android:name=".dk.gr6402.controller.MenuCtrl"></activity>
     </application>
 

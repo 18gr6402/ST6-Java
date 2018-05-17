@@ -22,6 +22,7 @@ import com.example.gr6402.timmy.dk.gr6402.myinterface.DatabaseTask;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -35,6 +36,8 @@ public class LoginCtrl extends AppCompatActivity implements DatabaseOperations, 
     public EditText passwordField;
     private Button btnLogin;
     private Button btnNewUser;
+    private String clinicID;
+    private String[] separated;
 
     // This is the declaration part for the spinner
     private InputStream is = null;
@@ -72,7 +75,7 @@ public class LoginCtrl extends AppCompatActivity implements DatabaseOperations, 
         // TODO Auto-generated method stub
     }
 
-    public void clinicSpinner(String[] separated) {
+    public void loadClinicsSpinner(String[] separated) {
         // Her forsøges at lave en spinner med dummy data
         clinicSpinner.setOnItemSelectedListener(this); // Spinner click listener
 
@@ -128,7 +131,8 @@ login. Udføre den tilhørende handling for intent af næste menu vindue.
         String password = passwordField.getText().toString();
         String type = "login";
         if (cbCheckPractitioner.isChecked()) {
-            String clinicID = "1"; //Dummy data
+            // Vi definerer klinikID ud det den valgte klinik i spinneren
+            clinicID = separated[clinicSpinner.getSelectedItemPosition()+(clinicSpinner.getSelectedItemPosition()-1)];
             DatabaseTask databaseTask = new DatabaseTask(this);
             databaseTask.execute(type,userName,password,clinicID);
             }
@@ -152,7 +156,7 @@ login. Udføre den tilhørende handling for intent af næste menu vindue.
         if (output.equals("TRUE")) {
             Intent i = new Intent(this, MenuCtrl.class);
             if (cbCheckPractitioner.isChecked()) {
-                Practitioner loginUser = new Practitioner(Integer.parseInt(userNameField.getText().toString()), false,1); //instancering af lægen, dummy todo mangler hente fra databasesjovet
+                Practitioner loginUser = new Practitioner(Integer.parseInt(userNameField.getText().toString()), false, Integer.parseInt(clinicID)); //instancering af lægen, dummy todo mangler hente fra databasesjovet
                 i.putExtra("PractitionerTag", (Parcelable) loginUser);
             } else {
                 Patient loginUser = new Patient(Integer.parseInt(userNameField.getText().toString()), "klasse 4", 12, 4); //instancering af patient, dummy todo mangler hente fra databasesjovet
@@ -162,7 +166,7 @@ login. Udføre den tilhørende handling for intent af næste menu vindue.
         }
         else if(output.equals("administrator")){
             Intent i = new Intent(this, MenuCtrl.class);
-            Practitioner loginUser = new Practitioner(Integer.parseInt(userNameField.getText().toString()), true,23); //instancering af lægen, dummy todo mangler hente fra databasesjovet
+            Practitioner loginUser = new Practitioner(Integer.parseInt(userNameField.getText().toString()), true, Integer.parseInt(clinicID)); //instancering af lægen, dummy todo mangler hente fra databasesjovet
             i.putExtra("PractitionerTag", (Parcelable) loginUser);
             startActivity(i);
         }
@@ -170,8 +174,8 @@ login. Udføre den tilhørende handling for intent af næste menu vindue.
             Toast.makeText(this, "Forkert loginoplysninger", Toast.LENGTH_LONG).show();
         }
         else {
-            String[] separated = output.split(",");
-            clinicSpinner(separated);
+            separated = output.split(",");
+            loadClinicsSpinner(separated);
         }
     }
 
