@@ -9,20 +9,6 @@
     tools:context=".dk.gr6402.controller.SymptomsCtrl">
 
     <TextView
-        android:id="@+id/anginaTxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Brystsmerter:" />
-
-    <Spinner
-        android:id="@+id/anginaChoice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
-        android:layout_marginBottom="10dp"/>
-
-    <TextView
         android:id="@+id/dyspneaTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,6 +16,20 @@
 
     <Spinner
         android:id="@+id/dyspneaChoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/anginaTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Brystsmerter:" />
+
+    <Spinner
+        android:id="@+id/anginaChoice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:drawable/btn_dropdown"

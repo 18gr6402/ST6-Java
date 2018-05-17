@@ -178,9 +178,10 @@ public class DatabaseTask extends AsyncTask<String,Void,String> {
                 String date = params[3];
                 String weight = params[4];
                 String dyspnea = params[5];
-                String fatigue = params[6];
-                String other = params[7];
-                String scgZ = params[8];
+                String angina = params[6];
+                String fatigue = params[7];
+                String other = params[8];
+                String scgZ = params[9];
                 URL url = new URL("http://9a7c2906.ngrok.io/setSCG.php");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -194,6 +195,7 @@ public class DatabaseTask extends AsyncTask<String,Void,String> {
                         + URLEncoder.encode("date", "UTF-8") + "=" + URLEncoder.encode(date, "UTF-8")+ "&"
                         + URLEncoder.encode("weight", "UTF-8") + "=" + URLEncoder.encode(weight, "UTF-8")+ "&"
                         + URLEncoder.encode("dyspnea", "UTF-8") + "=" + URLEncoder.encode(dyspnea, "UTF-8")+ "&"
+                        + URLEncoder.encode("angina", "UTF-8") + "=" + URLEncoder.encode(angina, "UTF-8")+ "&"
                         + URLEncoder.encode("fatigue", "UTF-8") + "=" + URLEncoder.encode(fatigue, "UTF-8")+ "&"
                         + URLEncoder.encode("other", "UTF-8") + "=" + URLEncoder.encode(other, "UTF-8")+ "&"
                         + URLEncoder.encode("scgZ", "UTF-8") + "=" + URLEncoder.encode(scgZ, "UTF-8");

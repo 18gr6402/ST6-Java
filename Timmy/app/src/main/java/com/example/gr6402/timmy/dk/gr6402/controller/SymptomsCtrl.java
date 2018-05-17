@@ -46,25 +46,24 @@ public class SymptomsCtrl extends AppCompatActivity implements DatabaseOperation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.symptoms);
-        anginaTxt = (TextView) findViewById(R.id.anginaTxt);
-        anginaChoice = (Spinner) findViewById(R.id.anginaChoice);
-        ArrayAdapter<CharSequence> anginaAdapter = ArrayAdapter.createFromResource(this, R.array.Angina, android.R.layout.simple_spinner_item); //Laver en adapter ud fra de forudbestemte lister i strings.xml
-        anginaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //tror det bare er stilen på dropdownen
-        anginaChoice.setAdapter(anginaAdapter);
-        anginaChoice.setOnItemSelectedListener(this);
-
         dyspneaTxt = (TextView) findViewById(R.id.dyspneaTxt);
         dyspneaChoice = (Spinner) findViewById(R.id.dyspneaChoice);
         ArrayAdapter<CharSequence> dyspneaAdapter = ArrayAdapter.createFromResource(this, R.array.Dyspnea, android.R.layout.simple_spinner_item);
-        dyspneaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //dyspneaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dyspneaChoice.setAdapter(dyspneaAdapter);
         dyspneaChoice.setOnItemSelectedListener(this);
 
+        anginaTxt = (TextView) findViewById(R.id.anginaTxt);
+        anginaChoice = (Spinner) findViewById(R.id.anginaChoice);
+        ArrayAdapter<CharSequence> anginaAdapter = ArrayAdapter.createFromResource(this, R.array.Angina, android.R.layout.simple_spinner_item); //Laver en adapter ud fra de forudbestemte lister i strings.xml
+        //anginaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //tror det bare er stilen på dropdownen
+        anginaChoice.setAdapter(anginaAdapter);
+        anginaChoice.setOnItemSelectedListener(this);
 
         fatigueTxt = (TextView) findViewById(R.id.fatigueTxt);
         fatigueChoice = (Spinner) findViewById(R.id.fatigueChoice);
         ArrayAdapter<CharSequence> fatigueAdapter = ArrayAdapter.createFromResource(this, R.array.Fatigue, android.R.layout.simple_spinner_item);
-        fatigueAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //fatigueAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         fatigueChoice.setAdapter(fatigueAdapter);
         fatigueChoice.setOnItemSelectedListener(this);
 
@@ -96,21 +95,21 @@ public class SymptomsCtrl extends AppCompatActivity implements DatabaseOperation
         /* Use the following switch-statement if you want to keep all spinner actions/callbacks together */
         /* The same can be done to the onNothingSelected callback */
         switch(parent.getId()) {
-            case R.id.anginaChoice:
-                // Do stuff for anginaChoice
-                newSCG.setAngina(pos);
-                showToast("In switch-statement for anginaChoice. Value=" + parent.getItemAtPosition(pos));
-                break;
             case R.id.dyspneaChoice:
                 // Do stuff for dyspneaChoice
                 newSCG.setDyspnea(pos);
-                showToast("In switch-statement for dyspneaChoice. Value=" + parent.getItemAtPosition(pos));
-                break;
+                showToast("Valgt=" + parent.getItemAtPosition(pos));
+            break;
+            case R.id.anginaChoice:
+                // Do stuff for anginaChoice
+                newSCG.setAngina(pos);
+                showToast("Valgt=" + parent.getItemAtPosition(pos));
+            break;
             case R.id.fatigueChoice:
                 // Do stuff for fatigueChoice
                 newSCG.setFatigue(pos);
-                showToast("In switch-statement for fatigueChoice. Value=" + parent.getItemAtPosition(pos));
-                break;
+                showToast("Valgt=" + parent.getItemAtPosition(pos));
+            break;
         }
     }
 
@@ -135,15 +134,14 @@ public class SymptomsCtrl extends AppCompatActivity implements DatabaseOperation
         //læser de sepererede strings ind i passende instancer til brug i resten af klassen
         int id = Integer.parseInt(seperated[0]);
         ptClinic.setClinicID(id);
-        newSCG.setAngina(Integer.parseInt(seperated[1]));
-        newSCG.setDyspnea(Integer.parseInt(seperated[2]));
+        newSCG.setDyspnea(Integer.parseInt(seperated[1]));
+        newSCG.setAngina(Integer.parseInt(seperated[2]));
         newSCG.setFatigue(Integer.parseInt(seperated[3]));
         newSCG.setWeight(Integer.parseInt(seperated[4]));
         //ændre view så dropdowns viser de gamle symptomer ud fra de hentede int fra databasen gemt i den nye måling
-        anginaChoice.setSelection(newSCG.getAngina());
         dyspneaChoice.setSelection(newSCG.getDyspnea());
+        anginaChoice.setSelection(newSCG.getAngina());
         fatigueChoice.setSelection(newSCG.getFatigue());
-
         weightField.setText(newSCG.getWeight().toString());
     }
 
@@ -158,22 +156,21 @@ public class SymptomsCtrl extends AppCompatActivity implements DatabaseOperation
         newSCG.setWeight(Integer.parseInt(weightField.getText().toString()));
         newSCG.setOther(otherField.getText().toString());
         //Gem de indberettede symptomer med dags dato i databasen.
-        String type = "saveSCG"; //TODO lav saveSCG i DatabaseTask
+        String type = "saveSCG";
         String clinicID = ptClinic.getClinicID().toString();
         String cpr = loginPatient.getCpr().toString();
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());;
         String weight = newSCG.getWeight().toString();
-        String angina = newSCG.getAngina().toString();
         String dyspnea = newSCG.getDyspnea().toString();
+        String angina = newSCG.getAngina().toString();
         String fatigue = newSCG.getFatigue().toString();
         String other = newSCG.getOther();
         String scgZ = newSCG.getScg();
         try {
             DatabaseTask databaseTask = new DatabaseTask(this);
-            databaseTask.execute(type, clinicID, cpr, date, weight, angina, dyspnea, fatigue, other, scgZ);
+            databaseTask.execute(type, clinicID, cpr, date, weight, dyspnea, angina, fatigue, other, scgZ);
         } catch (Exception e) {
             showToast("Fejl i gem af data");
-            //TODO Hvis det indberettede data ikke indsendes korrekt skal der komme en fejlmeddelelse og du skal føres tilbage til symptomindberetningen igen.
         }
     }
 

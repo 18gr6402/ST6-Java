@@ -11,8 +11,8 @@ public class SCGMeasure implements Parcelable{
     private String scg;
     private Integer mpi;
     private Integer weight;
-    private Integer angina;
     private Integer dyspnea;
+    private Integer angina;
     private Integer fatigue;
     private String other;
     private Boolean warning;
@@ -22,14 +22,14 @@ public class SCGMeasure implements Parcelable{
     public SCGMeasure() {
     }
 
-    public SCGMeasure(Object date, String fiducialmarkers, String scg, int mpi, int weight, int angina, int dyspnea, int fatigue, String other, Boolean warning){
+    public SCGMeasure(Object date, String fiducialmarkers, String scg, int mpi, int weight, int dyspnea, int angina, int fatigue, String other, Boolean warning){
         this.date = date;
         this.fiducialmarkers = fiducialmarkers;
         this.scg = scg;
         this.mpi = mpi;
         this.weight = weight;
-        this.angina = angina;
         this.dyspnea = dyspnea;
+        this.angina = angina;
         this.fatigue = fatigue;
         this.other = other;
         this.warning = warning;
@@ -126,8 +126,8 @@ public class SCGMeasure implements Parcelable{
         scg = in.readString();
         mpi = in.readByte() == 0x00 ? null : in.readInt();
         weight = in.readByte() == 0x00 ? null : in.readInt();
-        angina = in.readByte() == 0x00 ? null : in.readInt();
         dyspnea = in.readByte() == 0x00 ? null : in.readInt();
+        angina = in.readByte() == 0x00 ? null : in.readInt();
         fatigue = in.readByte() == 0x00 ? null : in.readInt();
         other = in.readString();
         warning = in.readByte() != 0;
@@ -155,17 +155,17 @@ public class SCGMeasure implements Parcelable{
             dest.writeByte((byte) (0x01));
             dest.writeInt(weight);
         }
-        if (angina == null) {
-            dest.writeByte((byte) (0x00));
-        } else {
-            dest.writeByte((byte) (0x01));
-            dest.writeInt(angina);
-        }
         if (dyspnea == null) {
             dest.writeByte((byte) (0x00));
         } else {
             dest.writeByte((byte) (0x01));
             dest.writeInt(dyspnea);
+        }
+        if (angina == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeInt(angina);
         }
         if (fatigue == null) {
             dest.writeByte((byte) (0x00));
