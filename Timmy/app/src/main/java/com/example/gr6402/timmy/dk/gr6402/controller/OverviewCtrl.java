@@ -2,7 +2,6 @@ package com.example.gr6402.timmy.dk.gr6402.controller;
 
 import android.content.Intent;
 import android.os.Parcelable;
-import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,10 +13,6 @@ import com.example.gr6402.timmy.R;
 import com.example.gr6402.timmy.dk.gr6402.model.Patient;
 import com.example.gr6402.timmy.dk.gr6402.model.Practitioner;
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
-
-import org.w3c.dom.Text;
 
 public class OverviewCtrl extends AppCompatActivity {
 
@@ -125,7 +120,7 @@ public class OverviewCtrl extends AppCompatActivity {
 
 
     public void handleAdd(View view){
-        Intent i = new Intent(this, AddCtrl.class);
+        Intent i = new Intent(this, AddUserCtrl.class);
         i.putExtra("PractitionerTag", (Parcelable) loginPractitioner);
         Bundle bundle = new Bundle();
         if(val == 1) {
@@ -139,7 +134,7 @@ public class OverviewCtrl extends AppCompatActivity {
 
 
     public void handleEdit(View view){
-        Intent i = new Intent(this, EditCtrl.class);
+        Intent i = new Intent(this, EditUserCtrl.class);
         i.putExtra("PractitionerTag", (Parcelable) loginPractitioner);
         i.putExtra("selectedPatientTag", selectedPatient);
         Bundle bundle = new Bundle();
@@ -166,7 +161,7 @@ public class OverviewCtrl extends AppCompatActivity {
 
 
     public void handleBack(View view){
-        Intent i = new Intent(this, MenuCtrl.class);
+        Intent i = new Intent(this, MainMenuCtrl.class);
         i.putExtra("PractitionerTag", (Parcelable) loginPractitioner);
         startActivity(i);
     }

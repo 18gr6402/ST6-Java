@@ -49,7 +49,7 @@ public class CollectSCGCtrl extends AppCompatActivity {
 
 
     public void handleBack(View view){
-        Intent i = new Intent(this, MenuCtrl.class);
+        Intent i = new Intent(this, MainMenuCtrl.class);
         i.putExtra("PatientTag", (Parcelable) loginPatient);
         startActivity(i);
     }

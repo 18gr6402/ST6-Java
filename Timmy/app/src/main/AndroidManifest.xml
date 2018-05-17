@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginLaege" />
-        <activity android:name=".dk.gr6402.controller.EditCtrl" />
+        <activity android:name=".dk.gr6402.controller.EditUserCtrl" />
         <activity android:name=".dk.gr6402.controller.GuideCtrl" />
         <activity android:name=".dk.gr6402.controller.ProfileCtrl" />
         <activity android:name=".dk.gr6402.controller.CollectSCGCtrl" />
@@ -27,13 +27,13 @@
         <activity android:name=".dk.gr6402.controller.ConfirmMeasureCtrl" />
         <activity android:name=".dk.gr6402.controller.SymptomsCtrl" />
         <activity android:name=".dk.gr6402.controller.OverviewCtrl" />
-        <activity android:name=".dk.gr6402.controller.AddCtrl" />
+        <activity android:name=".dk.gr6402.controller.AddUserCtrl" />
         <activity android:name=".dk.gr6402.controller.ResetThresholdDialogCtrl" />
         <activity android:name=".dk.gr6402.controller.DeleteDialogCtrl" />
         <activity android:name=".dk.gr6402.controller.InspectMonitoringCtrl" />
         <activity android:name=".dk.gr6402.controller.WarningsCtrl" />
         <activity android:name=".dk.gr6402.controller.NewUserCtrl" />
-        <activity android:name=".dk.gr6402.controller.MenuCtrl"></activity>
+        <activity android:name=".dk.gr6402.controller.MainMenuCtrl"></activity>
     </application>
 
 </manifest>

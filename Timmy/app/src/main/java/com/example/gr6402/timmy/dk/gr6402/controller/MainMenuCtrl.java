@@ -1,6 +1,5 @@
 package com.example.gr6402.timmy.dk.gr6402.controller;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
@@ -12,9 +11,8 @@ import android.widget.Toast;
 import com.example.gr6402.timmy.R;
 import com.example.gr6402.timmy.dk.gr6402.model.Patient;
 import com.example.gr6402.timmy.dk.gr6402.model.Practitioner;
-import com.example.gr6402.timmy.dk.gr6402.model.User;
 
-public class MenuCtrl extends AppCompatActivity {
+public class MainMenuCtrl extends AppCompatActivity {
 
     private Button btnProfile;
     private Button btnWarnings;
@@ -30,7 +28,7 @@ public class MenuCtrl extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu);
+        setContentView(R.layout.mainmenu);
 
         // Forbind Button i attribut og layout
         btnProfile = (Button) findViewById(R.id.btnProfile);

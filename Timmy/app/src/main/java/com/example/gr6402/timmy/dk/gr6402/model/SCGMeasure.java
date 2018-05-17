@@ -11,9 +11,10 @@ public class SCGMeasure implements Parcelable{
     private String scg;
     private Integer mpi;
     private Integer weight;
-    private String angina;
-    private String dyspnea;
-    private String fatigue;
+    private Integer angina;
+    private Integer dyspnea;
+    private Integer fatigue;
+    private String other;
     private Boolean warning;
 
 
@@ -21,7 +22,7 @@ public class SCGMeasure implements Parcelable{
     public SCGMeasure() {
     }
 
-    public SCGMeasure(Object date, String fiducialmarkers, String scg, int mpi, int weight, String angina, String dyspnea, String fatigue, Boolean warning){
+    public SCGMeasure(Object date, String fiducialmarkers, String scg, int mpi, int weight, int angina, int dyspnea, int fatigue, String other, Boolean warning){
         this.date = date;
         this.fiducialmarkers = fiducialmarkers;
         this.scg = scg;
@@ -30,6 +31,7 @@ public class SCGMeasure implements Parcelable{
         this.angina = angina;
         this.dyspnea = dyspnea;
         this.fatigue = fatigue;
+        this.other = other;
         this.warning = warning;
     }
 
@@ -67,6 +69,7 @@ public class SCGMeasure implements Parcelable{
         this.mpi = mpi;
     }
 
+
     public Integer getWeight() {
         return weight;
     }
@@ -75,28 +78,36 @@ public class SCGMeasure implements Parcelable{
         this.weight = weight;
     }
 
-    public String getAngina() {
+    public Integer getAngina() {
         return angina;
     }
 
-    public void setAngina(String angina) {
+    public void setAngina(Integer angina) {
         this.angina = angina;
     }
 
-    public String getDyspnea() {
+    public Integer getDyspnea() {
         return dyspnea;
     }
 
-    public void setDyspnea(String dyspnea) {
+    public void setDyspnea(Integer dyspnea) {
         this.dyspnea = dyspnea;
     }
 
-    public String getFatigue() {
+    public Integer getFatigue() {
         return fatigue;
     }
 
-    public void setFatigue(String fatigue) {
+    public void setFatigue(Integer fatigue) {
         this.fatigue = fatigue;
+    }
+
+    public String getOther() {
+        return other;
+    }
+
+    public void setOther(String other) {
+        this.other = other;
     }
 
     public Boolean getWarning() {
@@ -115,9 +126,10 @@ public class SCGMeasure implements Parcelable{
         scg = in.readString();
         mpi = in.readByte() == 0x00 ? null : in.readInt();
         weight = in.readByte() == 0x00 ? null : in.readInt();
-        angina = in.readString();
-        dyspnea = in.readString();
-        fatigue = in.readString();
+        angina = in.readByte() == 0x00 ? null : in.readInt();
+        dyspnea = in.readByte() == 0x00 ? null : in.readInt();
+        fatigue = in.readByte() == 0x00 ? null : in.readInt();
+        other = in.readString();
         warning = in.readByte() != 0;
     }
 
@@ -143,9 +155,25 @@ public class SCGMeasure implements Parcelable{
             dest.writeByte((byte) (0x01));
             dest.writeInt(weight);
         }
-        dest.writeString(angina);
-        dest.writeString(dyspnea);
-        dest.writeString(fatigue);
+        if (angina == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeInt(angina);
+        }
+        if (dyspnea == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeInt(dyspnea);
+        }
+        if (fatigue == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeInt(fatigue);
+        }
+        dest.writeString(other);
         if (warning == null) {
             dest.writeByte((byte) (0x02));
         } else {

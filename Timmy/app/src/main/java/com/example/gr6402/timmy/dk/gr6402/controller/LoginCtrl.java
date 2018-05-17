@@ -154,7 +154,7 @@ login. Udføre den tilhørende handling for intent af næste menu vindue.
     @Override
     public void onTaskCompleted(String output) {
         if (output.equals("TRUE")) {
-            Intent i = new Intent(this, MenuCtrl.class);
+            Intent i = new Intent(this, MainMenuCtrl.class);
             if (cbCheckPractitioner.isChecked()) {
                 Practitioner loginUser = new Practitioner(Integer.parseInt(userNameField.getText().toString()), false, Integer.parseInt(clinicID)); //instancering af lægen, dummy todo mangler hente fra databasesjovet
                 i.putExtra("PractitionerTag", (Parcelable) loginUser);
@@ -165,7 +165,7 @@ login. Udføre den tilhørende handling for intent af næste menu vindue.
             startActivity(i);
         }
         else if(output.equals("administrator")){
-            Intent i = new Intent(this, MenuCtrl.class);
+            Intent i = new Intent(this, MainMenuCtrl.class);
             Practitioner loginUser = new Practitioner(Integer.parseInt(userNameField.getText().toString()), true, Integer.parseInt(clinicID)); //instancering af lægen, dummy todo mangler hente fra databasesjovet
             i.putExtra("PractitionerTag", (Parcelable) loginUser);
             startActivity(i);

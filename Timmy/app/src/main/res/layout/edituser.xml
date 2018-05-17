@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".dk.gr6402.controller.EditCtrl">
+    tools:context=".dk.gr6402.controller.EditUserCtrl">
 
     <ScrollView
         android:layout_width="match_parent"

@@ -5,9 +5,7 @@ import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -17,7 +15,7 @@ import com.example.gr6402.timmy.R;
 import com.example.gr6402.timmy.dk.gr6402.model.Patient;
 import com.example.gr6402.timmy.dk.gr6402.model.Practitioner;
 
-public class EditCtrl extends AppCompatActivity{
+public class EditUserCtrl extends AppCompatActivity{
 
     private TextView cprTxt;
     private EditText cprField;
@@ -45,7 +43,7 @@ public class EditCtrl extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.edit);
+        setContentView(R.layout.edituser);
         cprTxt = (TextView) findViewById(R.id.cprTxt);
         cprField = (EditText) findViewById(R.id.cprField);
         cprTxt2 = (TextView) findViewById(R.id.cprTxt2);

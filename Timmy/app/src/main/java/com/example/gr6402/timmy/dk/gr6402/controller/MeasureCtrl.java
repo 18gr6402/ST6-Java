@@ -38,7 +38,7 @@ public class MeasureCtrl extends AppCompatActivity {
     private ArrayList<Float> zData = new ArrayList<Float>();
     private SensorManager sensorManager;
     private Sensor accelerometer;
-    private SCGMeasure newSCG = new SCGMeasure(null,null,null,0,0,null,null,null,null);
+    private SCGMeasure newSCG = new SCGMeasure(null,null,null,0,0,0,0,0,null,false);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

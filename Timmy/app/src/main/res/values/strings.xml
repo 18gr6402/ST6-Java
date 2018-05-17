@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Timmy</string>
+    <string-array name="Fatigue">
+        <item>Oplever ingen unormal træthed</item>
+        <item>Oplever træthed ved moderat til hårdere fysisk anstrengelse</item>
+        <item>Oplever træthed ved lettere fysisk anstrengelse</item>
+        <item>Oplever træthed i hvile</item>
+    </string-array>
+
+    <string-array name="Angina">
+        <item>Oplever ingen brystsmerter</item>
+        <item>Oplever brystsmerter ved moderat til hårdere fysisk anstrengelse</item>
+        <item>Oplever brystsmerter ved lettere fysisk anstrengelse</item>
+        <item>Oplever brystsmerter i hvile</item>
+    </string-array>
+
+    <string-array name="Dyspnea">
+        <item>Oplever ingen unormal åndenød</item>
+        <item>Oplever åndenød  ved moderat til hårdere fysisk anstrengelse</item>
+        <item>Oplever åndenød  ved lettere fysisk anstrengelse</item>
+        <item>Oplever åndenød  i hvile</item>
+    </string-array>
 </resources>

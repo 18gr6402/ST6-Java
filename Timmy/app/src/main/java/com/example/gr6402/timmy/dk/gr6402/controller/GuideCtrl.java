@@ -70,7 +70,7 @@ public class GuideCtrl extends AppCompatActivity {
     public void handleOK (View view){
         Intent i;
         if (val == 1) {
-            i = new Intent(this, MenuCtrl.class);
+            i = new Intent(this, MainMenuCtrl.class);
             i.putExtra("PractitionerTag", (Parcelable) loginPractitioner);
             startActivity(i);
         }

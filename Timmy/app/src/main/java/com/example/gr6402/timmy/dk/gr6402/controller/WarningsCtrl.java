@@ -14,8 +14,6 @@ import com.example.gr6402.timmy.dk.gr6402.model.Patient;
 import com.example.gr6402.timmy.dk.gr6402.model.Practitioner;
 import com.jjoe64.graphview.GraphView;
 
-import org.w3c.dom.Text;
-
 public class WarningsCtrl extends AppCompatActivity {
 
     private TableLayout warningTable;
@@ -69,7 +67,7 @@ public class WarningsCtrl extends AppCompatActivity {
     }
 
     public void handleBack (View view){
-        Intent i = new Intent(this, MenuCtrl.class);
+        Intent i = new Intent(this, MainMenuCtrl.class);
         i.putExtra("PractitionerTag", (Parcelable) loginPractitioner);
         startActivity(i);
     }

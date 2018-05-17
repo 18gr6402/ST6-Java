@@ -97,7 +97,7 @@ public class ProfileCtrl extends AppCompatActivity implements DatabaseOperations
 
 
     public void handleUpdate(View view){
-        Intent i = new Intent(this,EditCtrl.class);
+        Intent i = new Intent(this,EditUserCtrl.class);
         //til at fortælle vi kommer fra profile (val = 1) og ikke patientOverview (val = 0)
         Bundle bundle = new Bundle();
         bundle.putInt("VAL", 1);
@@ -115,7 +115,7 @@ public class ProfileCtrl extends AppCompatActivity implements DatabaseOperations
 
 
     public void handleBack(View view){
-        Intent i = new Intent(this,MenuCtrl.class);
+        Intent i = new Intent(this,MainMenuCtrl.class);
         if (loginPatient != null) {
             i.putExtra("PatientTag",(Parcelable) loginPatient);
         }

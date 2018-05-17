@@ -7,6 +7,14 @@ public class Clinic {
     private String clinicName;
     private String region;
 
+    public Clinic() {
+    }
+
+    public Clinic(int clinicID, String clinicName, String region){
+        this.clinicID =  clinicID;
+        this.clinicName = clinicName;
+        this.region = region;
+    }
 
     // get and set methods
     public Integer getClinicID() {
