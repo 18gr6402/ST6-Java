@@ -18,7 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginLaege" />
         <activity android:name=".dk.gr6402.controller.EditUserCtrl" />
         <activity android:name=".dk.gr6402.controller.GuideCtrl" />
         <activity android:name=".dk.gr6402.controller.ProfileCtrl" />

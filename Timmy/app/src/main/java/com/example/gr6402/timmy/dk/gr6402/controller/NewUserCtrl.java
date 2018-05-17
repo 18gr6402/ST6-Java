@@ -75,7 +75,7 @@ public class NewUserCtrl extends AppCompatActivity {
     }
 
     public void handleOk(View view){
-        Intent i = new Intent(this, MenuCtrl.class);
+        Intent i = new Intent(this, MainMenuCtrl.class);
         if (cbCheckPractitioner.isChecked()) {
             Practitioner loginUser = new Practitioner(Integer.parseInt(employmentIDField.getText().toString()), false,1); //instancering af lægen, dummy todo mangler at gemme ny læge i databasen
             i.putExtra("PractitionerTag", (Parcelable) loginUser);
