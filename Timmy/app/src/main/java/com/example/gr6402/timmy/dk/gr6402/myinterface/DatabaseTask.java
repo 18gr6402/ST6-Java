@@ -37,7 +37,7 @@ public class DatabaseTask extends AsyncTask<String,Void,String> {
                 if(params.length == 4){
                     clinicID = params[3];
                 }
-                URL url = new URL("http://871ec2c2.ngrok.io/login.php");
+                URL url = new URL("http://9a7c2906.ngrok.io/login.php");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -80,7 +80,7 @@ public class DatabaseTask extends AsyncTask<String,Void,String> {
                 if(params.length == 3){
                     clinicID = params[2];
                 }
-                URL url = new URL("http://871ec2c2.ngrok.io/getProfile.php");
+                URL url = new URL("http://9a7c2906.ngrok.io/getProfile.php");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -118,7 +118,7 @@ public class DatabaseTask extends AsyncTask<String,Void,String> {
         if(type.equals("loadSYMP") ) {
             try {
                 String id = params[1];
-                URL url = new URL("http://871ec2c2.ngrok.io/getSymp.php");
+                URL url = new URL("http://9a7c2906.ngrok.io/getSymp.php");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -135,6 +135,29 @@ public class DatabaseTask extends AsyncTask<String,Void,String> {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
                 String result ="";
                 Object line = "";
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(type.equals("loadClinics")) {
+            try {
+                URL url = new URL("http://9a7c2906.ngrok.io/get_clinics.php");
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setDoInput(true);
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                String result ="";
+                String line = "";
                 while ((line = bufferedReader.readLine()) != null) {
                     result += line;
                 }
