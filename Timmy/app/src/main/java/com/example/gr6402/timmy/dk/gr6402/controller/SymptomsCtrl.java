@@ -98,17 +98,17 @@ public class SymptomsCtrl extends AppCompatActivity implements DatabaseOperation
             case R.id.dyspneaChoice:
                 // Do stuff for dyspneaChoice
                 newSCG.setDyspnea(pos);
-                showToast("Valgt=" + parent.getItemAtPosition(pos));
+                showToast("Symptomer tilpasset");
             break;
             case R.id.anginaChoice:
                 // Do stuff for anginaChoice
                 newSCG.setAngina(pos);
-                showToast("Valgt=" + parent.getItemAtPosition(pos));
+                showToast("Symptomer tilpasset");
             break;
             case R.id.fatigueChoice:
                 // Do stuff for fatigueChoice
                 newSCG.setFatigue(pos);
-                showToast("Valgt=" + parent.getItemAtPosition(pos));
+                showToast("Symptomer tilpasset");
             break;
         }
     }
@@ -122,7 +122,7 @@ public class SymptomsCtrl extends AppCompatActivity implements DatabaseOperation
     ("utility")Metode for visning af toast's
      */
     void showToast(CharSequence msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
 
@@ -132,8 +132,7 @@ public class SymptomsCtrl extends AppCompatActivity implements DatabaseOperation
     */
     public void showDetails(String[] seperated){
         //læser de sepererede strings ind i passende instancer til brug i resten af klassen
-        int id = Integer.parseInt(seperated[0]);
-        ptClinic.setClinicID(id);
+        ptClinic.setClinicID(Integer.parseInt(seperated[0]));
         newSCG.setDyspnea(Integer.parseInt(seperated[1]));
         newSCG.setAngina(Integer.parseInt(seperated[2]));
         newSCG.setFatigue(Integer.parseInt(seperated[3]));
@@ -181,14 +180,42 @@ public class SymptomsCtrl extends AppCompatActivity implements DatabaseOperation
      */
     @Override
     public void onTaskCompleted(String output) {
-        String[] separated = output.split(",");
         if (loadDone == false) {
-            showDetails(separated);
-            loadDone = true;
+            if (output.equals("FALSE")){
+                String type = "loadSYMPny"; // TODO forsæt her spasser nar kæmpe fedepik
+                String id = loginPatient.getCpr().toString();
+                DatabaseTask databaseTask = new DatabaseTask(this);
+                databaseTask.execute(type,id);
+            } else {
+                String[] separated = output.split(",");
+                if (separated.length == 1){
+                    ptClinic.setClinicID(Integer.parseInt(separated[0]));
+                } else {
+                    showDetails(separated);
+                }
+                loadDone = true;
+            }
         } else {
-            Intent i = new Intent(this, MainMenuCtrl.class);
-            i.putExtra("PatientTag", (Parcelable) loginPatient);
-            startActivity(i);
+            if (output.equals("SUCCESS")) {
+                showToast("Målingen blev gemt i databasen");
+
+            } else if (output.endsWith("FAIL")){
+                showToast("Fejl! Dagens måling allerede i database.");
+            }
+            final Intent i = new Intent(this, MainMenuCtrl.class);
+            Thread thread = new Thread(){
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(3500); // As I am using LENGTH_LONG in Toast
+                        i.putExtra("PatientTag", (Parcelable) loginPatient);
+                        startActivity(i);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            thread.start();
         }
     }
 }
