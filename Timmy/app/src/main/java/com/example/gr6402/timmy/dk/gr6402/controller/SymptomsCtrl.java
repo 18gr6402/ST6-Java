@@ -79,7 +79,7 @@ public class SymptomsCtrl extends AppCompatActivity implements DatabaseOperation
 
         // load af de gamle symptomer fra databasen
         String type = "loadSYMP";
-        String id = loginPatient.getCpr().toString();
+        String id = String.format("%010d", loginPatient.getCpr());
         DatabaseTask databaseTask = new DatabaseTask(this);
         databaseTask.execute(type,id);
     }
@@ -115,6 +115,21 @@ public class SymptomsCtrl extends AppCompatActivity implements DatabaseOperation
 
     public void onNothingSelected(AdapterView<?> parent) {
         // hvad der skal ske hvis der ikke vælges nogen.
+        switch(parent.getId()) {
+            case R.id.dyspneaChoice:
+                // Do stuff for dyspneaChoice
+                newSCG.setDyspnea(dyspneaChoice.getSelectedItemPosition());
+                break;
+            case R.id.anginaChoice:
+                // Do stuff for anginaChoice
+                newSCG.setAngina(anginaChoice.getSelectedItemPosition());
+
+                break;
+            case R.id.fatigueChoice:
+                // Do stuff for fatigueChoice
+                newSCG.setFatigue(fatigueChoice.getSelectedItemPosition());
+                break;
+        }
     }
 
 
@@ -152,24 +167,28 @@ public class SymptomsCtrl extends AppCompatActivity implements DatabaseOperation
     Catch og viser fejl hvis ej.
      */
     public void handleOk(View view){
-        newSCG.setWeight(Integer.parseInt(weightField.getText().toString()));
-        newSCG.setOther(otherField.getText().toString());
-        //Gem de indberettede symptomer med dags dato i databasen.
-        String type = "saveSCG";
-        String clinicID = ptClinic.getClinicID().toString();
-        String cpr = loginPatient.getCpr().toString();
-        String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());;
-        String weight = newSCG.getWeight().toString();
-        String dyspnea = newSCG.getDyspnea().toString();
-        String angina = newSCG.getAngina().toString();
-        String fatigue = newSCG.getFatigue().toString();
-        String other = newSCG.getOther();
-        String scgZ = newSCG.getScg();
-        try {
-            DatabaseTask databaseTask = new DatabaseTask(this);
-            databaseTask.execute(type, clinicID, cpr, date, weight, dyspnea, angina, fatigue, other, scgZ);
-        } catch (Exception e) {
-            showToast("Fejl i gem af data");
+        if (weightField.getText().toString().equals("")){
+            showToast("Fejl! Udfyld vægt");
+        }else {
+            newSCG.setWeight(Integer.parseInt(weightField.getText().toString()));
+            newSCG.setOther(otherField.getText().toString());
+            //Gem de indberettede symptomer med dags dato i databasen.
+            String type = "saveSCG";
+            String clinicID = ptClinic.getClinicID().toString();
+            String cpr = String.format("%010d", loginPatient.getCpr());
+            String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+            String weight = newSCG.getWeight().toString();
+            String dyspnea = newSCG.getDyspnea().toString();
+            String angina = newSCG.getAngina().toString();
+            String fatigue = newSCG.getFatigue().toString();
+            String other = newSCG.getOther();
+            String scgZ = newSCG.getScg();
+            try {
+                DatabaseTask databaseTask = new DatabaseTask(this);
+                databaseTask.execute(type, clinicID, cpr, date, weight, dyspnea, angina, fatigue, other, scgZ);
+            } catch (Exception e) {
+                showToast("Fejl i gem af data");
+            }
         }
     }
 
@@ -182,8 +201,8 @@ public class SymptomsCtrl extends AppCompatActivity implements DatabaseOperation
     public void onTaskCompleted(String output) {
         if (loadDone == false) {
             if (output.equals("FALSE")){
-                String type = "loadSYMPny"; // TODO forsæt her spasser nar kæmpe fedepik
-                String id = loginPatient.getCpr().toString();
+                String type = "loadSYMPny";
+                String id = String.format("%010d",loginPatient.getCpr());
                 DatabaseTask databaseTask = new DatabaseTask(this);
                 databaseTask.execute(type,id);
             } else {
