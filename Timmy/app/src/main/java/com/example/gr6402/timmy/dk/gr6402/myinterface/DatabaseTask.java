@@ -254,7 +254,7 @@ public class DatabaseTask extends AsyncTask<String,Void,String> {
                 e.printStackTrace();
             }
         }
-        if(type.equals("set_newuser")) {
+        if(type.equals("update_newuser")) {
             try {
                 String id = params[1];
                 String firstName = params[2];
@@ -263,7 +263,7 @@ public class DatabaseTask extends AsyncTask<String,Void,String> {
                 if(params.length == 6){
                     clinicID = params[5];
                 }
-                URL url = new URL("http://" + ngrok + ".ngrok.io/setNew.php");
+                URL url = new URL("http://" + ngrok + ".ngrok.io/updateNewUser.php");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);

@@ -139,7 +139,7 @@ public class NewUserCtrl extends AppCompatActivity implements DatabaseOperations
         String lastName = lastNameField.getText().toString();
         String password = passwordField.getText().toString();
         String password2 = passwordField2.getText().toString();
-        String type = "set_newuser";
+        String type = "update_newuser";
         if (password.equals(password2)) {
             if (cbCheckPractitioner.isChecked()) {
                 String employmentID = employmentIDField.getText().toString();
