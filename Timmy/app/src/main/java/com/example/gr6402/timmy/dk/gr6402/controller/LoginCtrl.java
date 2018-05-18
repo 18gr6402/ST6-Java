@@ -131,15 +131,18 @@ login. Udføre den tilhørende handling for intent af næste menu vindue.
         String password = passwordField.getText().toString();
         String type = "login";
         if (cbCheckPractitioner.isChecked()) {
-            // Vi definerer klinikID ud det den valgte klinik i spinneren
-            clinicID = separated[clinicChoice.getSelectedItemPosition()+(clinicChoice.getSelectedItemPosition()-1)];
-            DatabaseTask databaseTask = new DatabaseTask(this);
-            databaseTask.execute(type,userName,password,clinicID);
+            if (clinicChoice.getSelectedItemPosition() != 0) {
+                // Vi definerer klinikID ud det den valgte klinik i spinneren
+                clinicID = separated[clinicChoice.getSelectedItemPosition() + (clinicChoice.getSelectedItemPosition() - 1)];
+                DatabaseTask databaseTask = new DatabaseTask(this);
+                databaseTask.execute(type, userName, password, clinicID);
+            } else {
+                Toast.makeText(this, "Vælg klinik", Toast.LENGTH_LONG).show();
             }
-
-            else {
-            DatabaseTask databaseTask = new DatabaseTask(this);
-            databaseTask.execute(type,userName,password);
+        }
+        else {
+        DatabaseTask databaseTask = new DatabaseTask(this);
+        databaseTask.execute(type,userName,password);
         }
     }
 
