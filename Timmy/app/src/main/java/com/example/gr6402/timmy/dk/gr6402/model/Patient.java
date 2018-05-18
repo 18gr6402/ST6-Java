@@ -6,7 +6,7 @@ import android.os.Parcelable;
 public class Patient extends User implements Parcelable {
 
     // attributes
-    private Integer cpr;
+    private Long cpr;
     private String nyha;
     private Integer symptomThreshold;
     private Integer mpiThreshold;
@@ -16,7 +16,7 @@ public class Patient extends User implements Parcelable {
 
     }
 
-    public Patient(int cpr, String nyha, int symptomThreshold, int mpiThreshold){
+    public Patient(Long cpr, String nyha, int symptomThreshold, int mpiThreshold){
         this.cpr =  cpr;
         this.nyha = nyha;
         this.symptomThreshold = symptomThreshold;
@@ -24,11 +24,11 @@ public class Patient extends User implements Parcelable {
     }
 
     // get and set methods
-    public Integer getCpr() {
+    public Long getCpr() {
         return cpr;
     }
 
-    public void setCpr(Integer cpr) {
+    public void setCpr(Long cpr) {
         this.cpr = cpr;
     }
 
@@ -58,7 +58,7 @@ public class Patient extends User implements Parcelable {
 
 
     protected Patient(Parcel in) {
-        cpr = in.readByte() == 0x00 ? null : in.readInt();
+        cpr = in.readByte() == 0x00 ? null : in.readLong();
         nyha = in.readString();
         symptomThreshold = in.readByte() == 0x00 ? null : in.readInt();
         mpiThreshold = in.readByte() == 0x00 ? null : in.readInt();
@@ -75,7 +75,7 @@ public class Patient extends User implements Parcelable {
             dest.writeByte((byte) (0x00));
         } else {
             dest.writeByte((byte) (0x01));
-            dest.writeInt(cpr);
+            dest.writeLong(cpr);
         }
         dest.writeString(nyha);
         if (symptomThreshold == null) {

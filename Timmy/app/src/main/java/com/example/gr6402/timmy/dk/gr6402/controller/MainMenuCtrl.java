@@ -119,7 +119,7 @@ public class MainMenuCtrl extends AppCompatActivity {
         // undersøg om det er patient der logger ind
         try {
             loginPatient = (Patient) getIntent().getParcelableExtra("PatientTag");
-            Integer cpr = loginPatient.getCpr();    //til test, skal slettes
+            Long cpr = loginPatient.getCpr();    //til test, skal slettes
             System.err.println("cpr="+cpr);         //til test, skal slettes
             btnWarnings.setVisibility(View.GONE);
             btnPractitionerOverview.setVisibility(View.GONE);

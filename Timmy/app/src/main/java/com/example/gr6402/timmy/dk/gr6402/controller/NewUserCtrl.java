@@ -85,7 +85,7 @@ public class NewUserCtrl extends AppCompatActivity implements DatabaseOperations
         String item = parent.getItemAtPosition(position).toString();
 
         // Showing selected spinner item
-        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+        Toast.makeText(parent.getContext(), "" + item, Toast.LENGTH_LONG).show();
     }
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
@@ -149,7 +149,7 @@ public class NewUserCtrl extends AppCompatActivity implements DatabaseOperations
                 databaseTask.execute(type, employmentID, firstName, lastName, password, clinicID);
             }
             else {
-                String cpr = cprField.getText().toString();
+                String cpr = String.format("%010d", cprField.getText());
                 DatabaseTask databaseTask = new DatabaseTask(this);
                 databaseTask.execute(type, cpr, firstName, lastName, password);
             }
@@ -172,7 +172,7 @@ public class NewUserCtrl extends AppCompatActivity implements DatabaseOperations
                 Practitioner loginUser = new Practitioner(Integer.parseInt(employmentIDField.getText().toString()), false, Integer.parseInt(clinicID));
                 i.putExtra("PractitionerTag", (Parcelable) loginUser);
             } else {
-                Patient loginUser = new Patient(Integer.parseInt(cprField.getText().toString()), "klasse 4", 12, 4); // TODO Nyha, symptomer og mpi er dummy fordi lægefunktionen og støttesystem ikke er implementeret.
+                Patient loginUser = new Patient(Long.parseLong(cprField.getText().toString()), "klasse 4", 12, 4); // TODO Nyha, symptomer og mpi er dummy fordi lægefunktionen og støttesystem ikke er implementeret.
                 i.putExtra("PatientTag", (Parcelable) loginUser);
             }
             startActivity(i);

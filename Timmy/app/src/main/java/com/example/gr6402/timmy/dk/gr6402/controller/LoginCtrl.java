@@ -169,7 +169,7 @@ login. Udføre den tilhørende handling for intent af næste menu vindue.
                 Practitioner loginUser = new Practitioner(Integer.parseInt(userNameField.getText().toString()), false, Integer.parseInt(clinicID)); //instancering af lægen, dummy todo mangler hente fra databasesjovet
                 i.putExtra("PractitionerTag", (Parcelable) loginUser);
             } else {
-                Patient loginUser = new Patient(Integer.parseInt(userNameField.getText().toString()), "klasse 4", 12, 4); //instancering af patient, dummy todo mangler hente fra databasesjovet
+                Patient loginUser = new Patient(Long.parseLong(userNameField.getText().toString()), "klasse 4", 12, 4); //instancering af patient, dummy todo mangler hente fra databasesjovet
                 i.putExtra("PatientTag", (Parcelable) loginUser);
             }
             startActivity(i);
