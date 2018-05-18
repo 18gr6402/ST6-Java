@@ -44,7 +44,7 @@
     <EditText
         android:id="@+id/employmentIDField"
         android:layout_width="match_parent"
-        android:layout_height="29dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:visibility="gone"
@@ -59,7 +59,7 @@
     <EditText
         android:id="@+id/cprField"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="" />
@@ -73,7 +73,7 @@
     <EditText
         android:id="@+id/firstNameField"
         android:layout_width="match_parent"
-        android:layout_height="34dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="" />
@@ -87,7 +87,7 @@
     <EditText
         android:id="@+id/lastNameField"
         android:layout_width="match_parent"
-        android:layout_height="31dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="" />
@@ -101,7 +101,7 @@
     <EditText
         android:id="@+id/passwordField"
         android:layout_width="match_parent"
-        android:layout_height="27dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword" />
 
@@ -114,7 +114,7 @@
     <EditText
         android:id="@+id/passwordField2"
         android:layout_width="match_parent"
-        android:layout_height="31dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword" />
 

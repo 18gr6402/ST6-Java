@@ -75,11 +75,11 @@ public class MeasureCtrl extends AppCompatActivity {
         sound2 = soundPool.load(this,R.raw.beepfinish,1);
 
         //Starter countDownTimer
-        countDown.setText("Nedtælling 5");
+        countDown.setText("5");
         countDownTimer = new CountDownTimer(26000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                countDown.setText("Nedtælling " + (millisUntilFinished-20000)/1000);
+                countDown.setText("" + (millisUntilFinished-20000)/1000);
 
                 if(millisUntilFinished >=1000 && millisUntilFinished <=21000 ){
                     mStart.setVisibility(View.INVISIBLE);
