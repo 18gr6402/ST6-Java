@@ -130,6 +130,7 @@ login. Udføre den tilhørende handling for intent af næste menu vindue.
         String userName = userNameField.getText().toString();
         String password = passwordField.getText().toString();
         String type = "login";
+        try{
         if (cbCheckPractitioner.isChecked()) {
             if (clinicChoice.getSelectedItemPosition() != 0) {
                 // Vi definerer klinikID ud det den valgte klinik i spinneren
@@ -143,7 +144,13 @@ login. Udføre den tilhørende handling for intent af næste menu vindue.
         else {
         DatabaseTask databaseTask = new DatabaseTask(this);
         databaseTask.execute(type,userName,password);
+        }}
+        catch (Exception e){
+            Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
+            finish();
+            startActivity(getIntent());
         }
+
     }
 
 /*
