@@ -20,28 +20,26 @@
         android:id="@+id/countDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="150dp"
-        android:layout_marginTop="250dp"
-        android:textSize="60dp"
+        android:layout_centerInParent="true"
+        android:text="5"
         android:textColor="#cc1212"
-        android:text="5" />
+        android:textSize="60dp" />
 
     <com.gigamole.library.PulseView
         android:id="@+id/pv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:visibility="invisible"
         app:pv_alpha="70"
         app:pv_color="#1f74ac"
         app:pv_icon="@drawable/timmy"
-        android:visibility="invisible"
         app:pv_icon_height="100dp"
         app:pv_icon_width="100dp"
-        app:pv_measure="height"
-        app:pv_spawn_period="2500"
         app:pv_interpolator="@android:anim/linear_interpolator"
-        />
+        app:pv_measure="height"
+        app:pv_spawn_period="2500" />
 
 
 </RelativeLayout>
