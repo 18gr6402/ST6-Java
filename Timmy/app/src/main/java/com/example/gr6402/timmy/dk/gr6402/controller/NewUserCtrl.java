@@ -149,7 +149,7 @@ public class NewUserCtrl extends AppCompatActivity implements DatabaseOperations
                 databaseTask.execute(type, employmentID, firstName, lastName, password, clinicID);
             }
             else {
-                String cpr = String.format("%010d", cprField.getText());
+                String cpr = String.format("%010d", Long.parseLong(cprField.getText().toString()));
                 DatabaseTask databaseTask = new DatabaseTask(this);
                 databaseTask.execute(type, cpr, firstName, lastName, password);
             }
