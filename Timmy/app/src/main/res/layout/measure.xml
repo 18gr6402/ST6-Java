@@ -34,7 +34,7 @@
         android:visibility="invisible"
         app:pv_alpha="70"
         app:pv_color="#1f74ac"
-        app:pv_icon="@drawable/timmy"
+        app:pv_icon="@drawable/timmyheart"
         app:pv_icon_height="100dp"
         app:pv_icon_width="100dp"
         app:pv_interpolator="@android:anim/linear_interpolator"
