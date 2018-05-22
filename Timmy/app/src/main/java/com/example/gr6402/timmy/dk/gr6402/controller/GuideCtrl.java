@@ -28,7 +28,6 @@ public class GuideCtrl extends AppCompatActivity {
     private TextView step7Txt;
     private ImageView step7Img;
     private TextView step8Txt;
-    private ImageView step8Img;
     private Button btnOK;
     private Bundle bun;
     private int val;
@@ -53,7 +52,6 @@ public class GuideCtrl extends AppCompatActivity {
         step7Txt = (TextView) findViewById(R.id.step7Txt);
         step7Img = (ImageView) findViewById(R.id.step7Img);
         step8Txt = (TextView) findViewById(R.id.step8Txt);
-        step8Img = (ImageView) findViewById(R.id.step8Img);
         btnOK = (Button) findViewById(R.id.btnOK);
 
         // hvor kommer vi fra; practitioner menuen (val = 1) eller patientens scg-målingsmenu (val = 0)

@@ -32,13 +32,13 @@
                 android:id="@+id/step1Txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1: Tryk på knappen “Start Måling” hvorefter en timer starter (INDSÆT SKÆRMBILLEDE)" />
+                android:text="1: Tryk på knappen “Start Måling” hvorefter en timer starter." />
 
             <ImageView
                 android:id="@+id/step1Img"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
-                app:srcCompat="@android:color/holo_green_dark" />
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/Startmaaling" />
 
             <TextView
                 android:id="@+id/step2Txt"
@@ -74,37 +74,31 @@
                 android:id="@+id/step6Txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="6: Vælge om målingen blev foretaget korrekt (INDSÆT SKÆRMBILLEDE). Hvis du hostede eller på anden måde bevægede dig under målingen, bør du her trykke nej og foretage en ny måling." />
+                android:text="6: Vælge om målingen blev foretaget korrekt. Hvis du hostede eller på anden måde bevægede dig under målingen, bør du her trykke nej og foretage en ny måling." />
 
             <ImageView
                 android:id="@+id/step6Img"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
-                app:srcCompat="@android:color/holo_green_dark" />
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/Korrektmaaling" />
 
             <TextView
                 android:id="@+id/step7Txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="7: Hvis målingen var korrekt, skal du nu indberette symptomer (jo højere tal jo værre  symptomer) og trykke “OK” for at indsende symptomer og SCG-opsamling. (INDSÆT SKÆRMBILLEDE)" />
+                android:text="7: Hvis målingen var korrekt, skal du nu indberette symptomer (jo højere tal jo værre  symptomer) og trykke “OK” for at indsende symptomer og SCG-opsamling." />
 
             <ImageView
                 android:id="@+id/step7Img"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
-                app:srcCompat="@android:color/holo_green_dark" />
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/Symptomer" />
 
             <TextView
                 android:id="@+id/step8Txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="8: Hvis data er indsendt korrekt, føres du tilbage til hovedmenuen, ellers dukker en fejlmeddelelse op." />
-
-            <ImageView
-                android:id="@+id/step8Img"
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                app:srcCompat="@android:color/holo_green_dark" />
 
             <Button
                 android:id="@+id/btnOK"
