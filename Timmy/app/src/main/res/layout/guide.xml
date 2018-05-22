@@ -92,7 +92,7 @@
                 android:id="@+id/step7Img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/Symptomer" />
+                app:srcCompat="@drawable/symptomer" />
 
             <TextView
                 android:id="@+id/step8Txt"
