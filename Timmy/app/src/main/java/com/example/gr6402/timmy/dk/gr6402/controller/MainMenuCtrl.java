@@ -113,6 +113,7 @@ public class MainMenuCtrl extends AppCompatActivity {
     public void handleLogout (View view){
         Intent i = new Intent(this,LoginCtrl.class);
         startActivity(i);
+        finish();
     }
 
     public void loginUser(){
