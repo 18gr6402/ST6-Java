@@ -38,7 +38,7 @@
                 android:id="@+id/step1Img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/Startmaaling" />
+                app:srcCompat="@drawable/startmaaling" />
 
             <TextView
                 android:id="@+id/step2Txt"
@@ -80,7 +80,7 @@
                 android:id="@+id/step6Img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/Korrektmaaling" />
+                app:srcCompat="@drawable/korrektmaaling" />
 
             <TextView
                 android:id="@+id/step7Txt"
