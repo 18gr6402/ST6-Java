@@ -22,7 +22,7 @@ public class DatabaseTask extends AsyncTask<String,Void,String> {
 
     private final DatabaseOperations databaseOperations;
     private String clinicID;
-    private String ngrok = "347bb45b";
+    private String ngrok = "8a473b00";
 
     public DatabaseTask(Activity activity){
         databaseOperations = (DatabaseOperations) activity;
